@@ -6,15 +6,18 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { SingupComponent } from './components/singup/singup.component';
+import { SinginComponent } from './components/singin/singin.component';
 
 const appRoutes: Routes = [
-  { path: 'singup', component: SingupComponent }
+  { path: 'singup', component: SingupComponent },
+  { path: 'singin', component: SinginComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    SingupComponent
+    SingupComponent,
+    SinginComponent
   ],
   imports: [
     BrowserModule,
