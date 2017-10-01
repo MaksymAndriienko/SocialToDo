@@ -1,30 +1,33 @@
 <div class="container">
     <div class="row">
-    <form class="form-horizontal">
+    <form class="form-horizontal" (submit)="addNewUser($event)">
   <fieldset>
   <!-- Text input-->
   <div class="form-group">
-    <label class="col-md-4 control-label" for="Name">Name</label>  
+    <label class="col-md-4 control-label" for="Username">Username</label>  
     <div class="col-md-5">
-    <input id="Name" name="Name" type="text" placeholder="username" class="form-control input-md" required="">
+    <input id="Username" name="Username" type="text" [(ngModel)]="username" placeholder="Username" class="form-control input-md" required="">
     </div>
   </div>
-  
-  <!-- Password input-->
+    <!-- Password input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="passwordinput">Password</label>
+      <div class="col-md-5">
+        <input id="passwordinput" [(ngModel)]="password" name="passwordinput" type="password" placeholder="" class="form-control input-md" required="">
+        <span class="help-block">max 16 characters</span>
+      </div>
+    </div>
   <div class="form-group">
-    <label class="col-md-4 control-label" for="passwordinput">Password</label>
+    <label class="col-md-4 control-label" for="FirstName">First Name</label>  
     <div class="col-md-5">
-      <input id="passwordinput" name="passwordinput" type="password" placeholder="" class="form-control input-md" required="">
-      <span class="help-block">max 16 characters</span>
+    <input id="FirstName" name="FirstName" [(ngModel)]="firstname" type="text" placeholder="FirstName" class="form-control input-md" required="">
     </div>
   </div>
-  
-  <!-- Password input-->
+
   <div class="form-group">
-    <label class="col-md-4 control-label" for="confirm_password">Confirm Password</label>
+    <label class="col-md-4 control-label" for="LastName">Last Name</label>  
     <div class="col-md-5">
-      <input id="confirm_password" name="confirm_password" type="password" placeholder="Re-type password" class="form-control input-md" required="">
-      
+    <input id="LastName" name="LastName" [(ngModel)]="lastname" type="text" placeholder="LastName" class="form-control input-md" required="">
     </div>
   </div>
   
@@ -33,11 +36,11 @@
     <label class="col-md-4 control-label" for="gender">Gender</label>
     <div class="col-md-4"> 
       <label class="radio-inline" for="gender-0">
-        <input type="radio" name="gender" id="gender-0" value="Male" checked="checked">
+        <input type="radio" name="gender" [(ngModel)]="gender" id="gender-0" value="Male" checked="checked">
         Male
       </label> 
       <label class="radio-inline" for="gender-1">
-        <input type="radio" name="gender" id="gender-1" value="Female">
+        <input type="radio" name="gender" [(ngModel)]="gender" id="gender-1" value="Female">
         Female
       </label>
     </div>
@@ -76,9 +79,9 @@
   
   <!-- Text input-->
   <div class="form-group">
-    <label class="col-md-4 control-label" for="emailId">Email Id</label>  
+    <label class="col-md-4 control-label" for="email">Email</label>  
     <div class="col-md-6">
-    <input id="emailId" name="emailId" type="text" placeholder="user@domain.com" class="form-control input-md" required="">
+    <input id="email" name="email" type="text" [(ngModel)]="email" placeholder="user@domain.com" class="form-control input-md" required="">
       
     </div>
   </div>
@@ -114,7 +117,7 @@
   <div class="form-group">
     <label class="col-md-4 control-label" for="submit"></label>
     <div class="col-md-4">
-      <button id="submit" name="submit" class="btn btn-success">Submit</button>
+      <button id="submit" name="submit" click="addNewUser($event)" class="btn btn-success">Submit</button>
     </div>
   </div>
   
