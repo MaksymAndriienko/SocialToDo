@@ -4,7 +4,7 @@ var http = require('http');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-mongoose.createConnection('mongodb://admin:samsung12@ds040167.mlab.com:40167/socialtodo');
+mongoose.connect('mongodb://admin:samsung12@ds040167.mlab.com:40167/socialtodo');
 
 const api = require('./server/routes/api');
 
