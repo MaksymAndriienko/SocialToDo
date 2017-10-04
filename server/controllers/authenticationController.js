@@ -1,15 +1,32 @@
 var mongoose = require('mongoose');
+var passport = require('passport');
+var jwt = require('jwt-simple');
 var User = require('../database/users');
 
 module.exports.signup = function(req, res){
-    var user = new User(req.body);
-    console.log(user);
-    user.save(function(err){
-        if(err)
-            throw err;
-        
-        console.log('User saved successfully!');
-    });
+    if(!req.body.username || !req.body.password){
+        res.json({
+            success: false,
+            msg: 'Please pass name and password.'
+        });
+    } else{
+        var newUser = new User({
+            username: req.body.username,
+            password: req.body.password,
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
+            gender: req.body.gender,
+            email: req.body.email,
+            avatar: req.body.avatar
+        });
 
-    res.json(req.body);
+        console.log(newUser);
+
+        newUser.save(function(err){
+            if (err) {
+                return res.json({success: false, msg: 'Username already exists.'});
+            }
+            res.json({success: true, msg: 'Successful created new user.'});
+        })
+    }
 }
