@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
   res.send('api works');
 });
 
-router.post('/user/authentication', authenticationController.signup);
+router.post('/user/signup', authenticationController.signup);
+router.post('/user/authentication', authenticationController.signin);
 
 module.exports = router;
