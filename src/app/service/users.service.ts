@@ -25,7 +25,7 @@ export class UsersService {
     return this.http.post('http://localhost:3000/api/user/authentication', JSON.stringify(user), {headers: headers})
       .map(res => res.json())
       .subscribe(
-      data => localStorage.setItem('currentUser', data.token),
+      data => localStorage.setItem('id_token', data.token),
       error => console.log(error)
     );
   }
