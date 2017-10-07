@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Http, Headers} from '@angular/http';
+import { tokenNotExpired } from 'angular2-jwt';
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -7,6 +8,11 @@ export class UsersService {
   public token: String;
 
   constructor(private http:Http) {}
+
+  loggedIn(){
+    console.log(tokenNotExpired('id_token'));
+    return tokenNotExpired('id_token');
+  }
 
   storeUserToken(token){
     localStorage.setItem('currentUser', JSON.stringify(token));
