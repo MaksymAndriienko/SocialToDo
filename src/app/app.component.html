@@ -8,7 +8,7 @@
         </div> <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9"> 
             <ul class="nav navbar-nav"> 
                 <li><a routerLink="/singin" routerLinkActive="active">Sing In</a></li> 
-                <li><a routerLink="/singup" routerLinkActive="active">Sing Up</a></li> 
+                <li><a routerLink="/singup" *ngIf="!userService.loggedIn()" routerLinkActive="active">Sing Up</a></li> 
              </ul> 
             </div> 
         </div> 

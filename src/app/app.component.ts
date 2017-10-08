@@ -8,5 +8,7 @@ import {UsersService} from './service/users.service';
   providers: [UsersService]
 })
 export class AppComponent {
+  constructor(private userService: UsersService) {}
+
   title = 'app';
 }
