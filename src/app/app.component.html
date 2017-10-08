@@ -7,8 +7,9 @@
             <a href="#" class="navbar-brand">Social To-Do</a> 
         </div> <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9"> 
             <ul class="nav navbar-nav"> 
-                <li><a routerLink="/singin" routerLinkActive="active">Sing In</a></li> 
+                <li><a routerLink="/singin" *ngIf="!userService.loggedIn()" routerLinkActive="active">Sing In</a></li> 
                 <li><a routerLink="/singup" *ngIf="!userService.loggedIn()" routerLinkActive="active">Sing Up</a></li> 
+                <li><a routerLink="/upload-images" *ngIf="userService.loggedIn()" routerLinkActive="active">Images</a></li> 
              </ul> 
             </div> 
         </div> 
