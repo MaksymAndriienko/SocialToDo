@@ -5,7 +5,7 @@
 <img-cropper #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
 <br>
 <span class="result rounded" *ngIf="data.image" >
-  <img [src]="data.image" [(ngModel)]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">
+  <img name="imageCreate" [src]="data.image" [(ngModel)]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">
 </span>
 
 <button type="button" (click)="ImagesUpload($event)" class="btn btn-lg btn-default btn-block">Image</button>

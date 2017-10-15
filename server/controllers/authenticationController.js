@@ -51,7 +51,9 @@ module.exports.signin = function(req, res){
                     var token = jwt.encode(user, config.secret);
                     res.json({
                         success: true,
-                        token: token
+                        token: token,
+                        _id: user._id,
+                        displayName: user.firstname + user.lastname
                     });
                 }
                 else{

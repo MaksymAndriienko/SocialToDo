@@ -10,7 +10,6 @@ export class UsersService {
   constructor(private http:Http) {}
 
   loggedIn(){
-    console.log(tokenNotExpired('id_token'));
     return tokenNotExpired('id_token');
   }
 
