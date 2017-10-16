@@ -6,6 +6,7 @@ var config = require('../config/database');
 var User = require('../database/users');
 const authenticationController = require('../controllers/authenticationController');
 const taskController = require('../controllers/taskController');
+const imagesController = require('../controllers/imagesController');
 const mongoose = require('mongoose');
 require('../config/passport')(passport);
 
@@ -17,6 +18,7 @@ router.get('/', (req, res) => {
 router.post('/user/signup', authenticationController.signup);
 router.post('/user/authentication', authenticationController.signin);
 router.post('/task/api', taskController.addTask);
+router.post('/image', imagesController.decodeImg);
 
 router.get('/memberinfo', passport.authenticate('jwt', { session: false}), function(req, res) {
   var token = getToken(req.headers);

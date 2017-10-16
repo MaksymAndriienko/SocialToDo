@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import {ImageCropperComponent, CropperSettings} from 'ng2-img-cropper';
+import { UploadImageService } from '../../service/upload-image.service';
 
 
 @Component({
@@ -15,17 +16,16 @@ export class UploadFormComponent {
   @ViewChild('cropper', undefined)
   cropper:ImageCropperComponent;
 
-  constructor() {
+  constructor(private uploadImageService: UploadImageService) {
       this.cropperSettings = new CropperSettings();
       this.cropperSettings.noFileInput = true;
       this.data = {};
   }
   
   ImagesUpload($event){
-    var dataImg = {
-      data: this.data
-    }
+    var dataImg = this.data;
     console.log(dataImg);
+    this.uploadImageService.uploadImage(dataImg);
   }
 
   fileChangeListener($event) {

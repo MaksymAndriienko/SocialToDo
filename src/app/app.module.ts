@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import {ImageCropperComponent} from 'ng2-img-cropper';
 import { AuthService } from './service/auth.service';
 import { UsersService } from './service/users.service';
+import { UploadImageService } from './service/upload-image.service';
 import { AppComponent } from './app.component';
 import { SingupComponent } from './components/singup/singup.component';
 import { SinginComponent } from './components/singin/singin.component';
@@ -39,7 +40,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     UsersService,
-    AuthService
+    AuthService,
+    UploadImageService
   ],
   bootstrap: [AppComponent]
 })
