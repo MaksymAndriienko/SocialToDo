@@ -10,6 +10,7 @@
                 <li><a routerLink="/singin" *ngIf="!userService.loggedIn()" routerLinkActive="active">Sing In</a></li> 
                 <li><a routerLink="/singup" *ngIf="!userService.loggedIn()" routerLinkActive="active">Sing Up</a></li> 
                 <li><a routerLink="/upload-images" *ngIf="userService.loggedIn()" routerLinkActive="active">Images</a></li> 
+                <button (click)="userService.logout()" *ngIf="userService.loggedIn()" ></button>
              </ul> 
             </div> 
         </div> 

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Http, Headers} from '@angular/http';
+import { Router } from '@angular/router';
 import { tokenNotExpired } from 'angular2-jwt';
 import 'rxjs/add/operator/map';
 
@@ -7,7 +8,7 @@ import 'rxjs/add/operator/map';
 export class UsersService {
   public token: String;
 
-  constructor(private http:Http) {}
+  constructor(private http:Http, private router: Router ) {}
 
   loggedIn(){
     return tokenNotExpired('id_token');
@@ -33,6 +34,11 @@ export class UsersService {
       data => localStorage.setItem('id_token', data.token),
       error => console.log(error)
     );
+  }
+
+  logout(){
+    localStorage.removeItem('id_token');
+    this.router.navigate(['/']);
   }
 
 }
