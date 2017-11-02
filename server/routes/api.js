@@ -21,6 +21,7 @@ router.post('/user/authentication', authenticationController.signin);
 router.post('/task/api', taskController.addTask);
 router.post('/image', imagesController.decodeImg);
 router.get('/profile/:id', profileController.getUserProgile);
+router.post('/profile/edit/:id', profileController.editUserProfile);
 
 router.get('/memberinfo', passport.authenticate('jwt', { session: false}), function(req, res) {
   var token = getToken(req.headers);

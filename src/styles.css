@@ -1,1 +1,562 @@
-/* You can add global styles to this file, and also import other style files */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    /*font-family: 'EB Garamond', serif;*/
+    font-family: 'Roboto';
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a:hover,
+a:visited,
+a:focus{
+    text-decoration: none;
+}
+.bold{
+    font-weight: bold;
+}
+body#random-wall {
+    background: url("image/dream.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+.wrap{
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+}
+
+.navbar{
+    margin-bottom:0;
+    border-radius:0;
+}
+
+.navbar-default {
+    background-color: #172331;
+    border-color: #1f313d;
+}
+
+.gradient {
+    background-color: rgba(253,253,253,1);
+    width: 1400px;
+    height: 100vh;
+    margin: 0 auto;
+}
+
+.greeting{
+    padding-top: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-photo{
+
+    display: inline-block;
+    width: 170px;
+    height: 170px;
+    overflow: hidden;
+}
+/* input values to crop the image: top, right, bottom, left */
+.main-photo img{
+    width: 170px;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.padding{
+    padding-top: 25px;
+}
+
+.block{
+    -webkit-box-shadow: -10px -10px 20px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -10px -10px 20px 0px rgba(0,0,0,0.75);
+    box-shadow: -10px -10px 20px 0px rgba(0,0,0,0.75);
+
+    background-color: #fff;
+    height: 312px;
+    margin-bottom: 30px;
+    font-size: 17px;
+    text-align: center;
+    /*border: solid 1px #708579;*/
+    overflow: hidden;
+}
+
+.ratatuj img{
+    margin-top: -48px;
+    transform: rotate(90deg);
+    height: inherit;
+}
+
+.ratatuj-text{
+    margin-top: -30px;
+    font-size: 19px;
+    color: #172331;
+}
+
+.check{
+    margin-top: 10px;
+    color: #00ff00;
+    font-size: 18px;
+}
+
+.block:hover{
+    /*border: solid 1px #172331;*/
+}
+
+.about-first-part{
+
+    padding: 50px 25px 0;
+    height: 156px;
+    background-color: #fff;
+    color: #172331;
+    /*font-family: 'EB Garamond', serif;*/
+}
+
+.about-second-part{
+    color: #fff;
+    text-align: left!important;
+    padding: 25px;
+    height: 156px;
+    background-color: #365d98;
+}
+
+.about-second-part li{
+    margin-bottom: 10px;
+}
+
+.main-goal{
+    background-image: url(/image/trip.jpg);
+    color: #172331;
+}
+
+.main-goal .mg-title{
+    margin-top: 40px;
+    font-size: 40px;
+}
+
+.main-goal .mg-text{
+    margin-top: 20px;
+    font-size: 25px;
+    background: #fff;
+}
+
+.main-goal .mg-percent{
+     margin-top: 15px;
+     font-size: 20px;
+ }
+
+.navbar-brand{
+    color: #fff!important;
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.navbar-nav li{
+    font-size: 18px;
+}
+
+.white a{
+    color: #fff!important;
+}
+
+.white a:hover{
+    color: #1a2a37!important;
+    background-color: #fff!important;
+}
+
+.active a{
+    background-color: #fff!important;
+    color: #1a2a37!important;
+}
+
+.find-friend-form input{
+    background-color: #fff;
+    border-color: #0f0f0f;
+    border-radius: 20px 0 0 20px;
+    color: #172331;
+    height: 32px;
+}
+
+.find-friend-form button{
+    padding: 5px 12px;
+    height: 32px;
+    margin-left:-10px;
+    background-color: #fff;
+    border-right: solid 1px #0f0f0f;
+    border-top: solid 1px #0f0f0f;
+    border-bottom: solid 1px #0f0f0f;
+    border-left:none;
+    border-radius: 0 20px 20px 0;
+    color: #172331;
+}
+
+.find-friend-form button:hover{
+    background-color: #fff;
+    border-right: solid 1px #0f0f0f;
+    border-top: solid 1px #0f0f0f;
+    border-bottom: solid 1px #0f0f0f;
+    border-left:none;
+}
+
+.find-friend-form button:focus{
+    border-right: solid 1px #0f0f0f;
+    border-top: solid 1px #0f0f0f;
+    border-bottom: solid 1px #0f0f0f;
+    border-left:none;
+}
+
+
+.find-friend-form input::-webkit-input-placeholder {color:#8b8b8b;}
+.find-friend-form input::-moz-placeholder          {color:#8b8b8b;}/* Firefox 19+ */
+.find-friend-form input:-moz-placeholder           {color:#8b8b8b;}/* Firefox 18- */
+.find-friend-form input:-ms-input-placeholder      {color:#8b8b8b;}
+
+.hi-user{
+    padding-left:20px;
+    color: #202734;
+    font-size: 30px;
+    /*font-family: 'EB Garamond', serif;*/
+}
+
+.greeting{
+    text-align: center;
+}
+
+.greeting .input-group{
+    width: 360px;
+}
+
+.greeting .input-group input{
+    background-color: #36484d;
+    border-color: #172331;
+    color: #fff;
+    border-radius: 5px!important;
+}
+
+.greeting .input-group input::-webkit-input-placeholder {color:#b5b5b5;}
+.greeting .input-group input::-moz-placeholder          {color:#b5b5b5;}/* Firefox 19+ */
+.greeting .input-group input:-moz-placeholder           {color:#b5b5b5;}/* Firefox 18- */
+.greeting .input-group input:-ms-input-placeholder      {color:#b5b5b5;}
+
+.main{
+    margin-top: 15px;
+}
+
+.main .main-left a{
+    color: #202734;
+    /*font-family: 'EB Garamond', serif;*/
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.main-left .last{
+    padding-bottom: 20px;
+    border-bottom: solid 2px #172331;
+}
+
+.main .main-left li{
+    margin-bottom:20px;
+}
+
+.italian{
+    background: url(/image/italian1.jpg) no-repeat;
+    -moz-background-size: 100%; /* Firefox 3.6+ */
+    -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+    -o-background-size: 100%; /* Opera 9.6+ */
+    background-size: 100%;
+    color: #172331;
+    padding-top: 120px;
+    font-size: 20px;
+
+}
+
+.italian .it-text{
+    background: #fff;
+}
+
+.parashut{
+    background: url(/image/parashyutist.jpg) no-repeat;
+    -moz-background-size: 100%; /* Firefox 3.6+ */
+    -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+    -o-background-size: 100%; /* Opera 9.6+ */
+    background-size: 100%;
+    color: #172331;
+    padding-top: 120px;
+    font-size: 20px;
+}
+
+.p-percent{
+    margin-top: 10px;
+}
+
+.parashut .p-text{
+    background: #fff;
+}
+
+.plus{
+    padding-top: 115px;
+    color: #172331;
+}
+
+.main-left li a:hover{
+    font-weight: bold;
+}
+
+/************************ LOGIN PANEL*************************/
+
+
+.card .fa{
+    padding: 8px;
+}
+
+.card-container.card {
+    text-align: center;
+    max-width: 400px;
+    padding: 30px 70px;
+    margin-top: 150px;
+}
+
+.btn {
+    font-weight: 700;
+    height: 36px;
+    user-select: none;
+    cursor: default;
+}
+
+
+.card {
+    background-color: rgba(32,39,52,.7);
+    /* just in case there no content*/
+    padding: 20px 25px 30px;
+    margin: 0 auto 25px;
+    margin-top: 50px;
+
+}
+
+.header{
+    text-align: center;
+    color: #fff;
+    font-size: 24pt;
+    padding-bottom:30px;
+}
+
+.submit{
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+.line-separator{
+    margin-top: 40px;
+    height:1px;
+    background:#455996;
+    border-bottom:#455996;
+}
+
+/************************  PROFILE  *************************/
+.first {
+    position: relative;
+    margin: 0 auto;
+    font-family: 'Roboto';
+}
+
+.photo-section,
+.wrapper {
+    position: absolute;
+    top:0;
+    right: 0;
+    left:0;
+    /*height: 660px;*/
+    height: 100vh;
+}
+
+.wrapper {
+    margin: 0 auto;
+    height: 100%;
+    max-width: 700px;
+    z-index: 100;
+    color: #fff;
+    /*text-align: center;*/
+    padding-top: 150px;
+}
+
+.photo-section {
+    background: url("/image/main-photo1.jpg") no-repeat center;
+    -moz-background-size: cover; /* Firefox 3.6+ */
+    -webkit-background-size: cover; /* Safari 3.1+ и Chrome 4.0+ */
+    -o-background-size: cover; /* Opera 9.6+ */
+    background-size: cover;
+    -webkit-filter: blur(1px);
+    -moz-filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+    filter: blur(1px);
+    z-index: 99;
+    /*padding: 200px 0;*/
+    background-attachment: fixed;
+}
+
+.photo-section:after {
+    content: '';
+    position: absolute;
+    background: rgba(32,39,52,.7);
+    /*background-color: rgba(0,0,0,.5);*/
+    top:0;
+    right: 0;
+    left: 0;
+    /*height: 660px;*/
+    height: 100vh;
+}
+
+.photo-name {
+    display: flex;
+    justify-content: space-between;
+}
+
+.photo {
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+}
+
+.photo img {
+    /*max-width: 100%;*/
+    /*max-height: 100%;*/
+}
+
+.name-about{
+
+    width: 400px;
+    text-align: left;
+}
+
+.name {
+    font-size: 40px;
+    margin-bottom: 20px;
+    font-weight:100;
+}
+
+.about {
+    margin-bottom: 20px;
+}
+
+.size18 {
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.size40 {
+    font-size: 40px;
+    line-height: 45px;
+}
+
+.line {
+    padding: 40px 0;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+    /*font-size: 40px;*/
+    border-bottom: solid 1px #999;
+    border-top: solid 1px #999;
+    line-height: 70px;
+    text-align: center;
+}
+
+
+.line a {
+    color: #fff;
+
+}
+
+.line-second:before {
+     content: '';
+     background-color: #999;
+     width: 1px;
+     height: 70px;
+     position: absolute;
+     left:207px;
+ }
+
+.line-third:before {
+    content: '';
+    background-color: #999;
+    width: 1px;
+    height: 70px;
+    position: absolute;
+    right:247px;
+}
+
+.second {
+    padding-top: 100vh;
+    padding-bottom: 1000px;
+    width: 100%;
+    background: url("/image/dream.jpg");
+    background-attachment: fixed;
+}
+
+.second>.wrap {
+    background: rgba(32,39,52,.7);
+    padding: 50px 20px;
+}
+
+.left-panel li i{
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.signout:before {
+    content: '';
+    width: 50px;
+    height: 1px;
+    background-color: #fff;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.left-panel ul li a:hover::after {
+    content: attr(data-title);
+    color: red;
+}
+
+.wrap .input-group {
+    margin-bottom: 10px;
+    float: right;
+}

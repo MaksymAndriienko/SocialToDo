@@ -21,3 +21,28 @@ module.exports.getUserProgile = function(req, res){
     });
 
 }
+
+module.exports.editUserProfile = function(req, res){
+    
+    User.findByIdAndUpdate({
+        _id: mongoose.Types.ObjectId(req.params.id)
+    }, {$set:req.body}, function(err, user){
+        if (err) throw err;
+
+        if(!user){
+            res.send({
+                success: false,
+                msq: 'Error, user not find'
+            })
+        }
+
+        else{
+            res.send({
+                success: true,
+                msg: 'Good'
+            });
+        }
+        
+    });
+
+}
