@@ -9,7 +9,6 @@ import { UsersService } from '../../service/users.service';
 export class SinginComponent {
   username: String;
   password: String;
-
   constructor (private userService: UsersService){
     console.log('Form login user');
   }

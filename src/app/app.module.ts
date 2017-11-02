@@ -12,6 +12,8 @@ import { SingupComponent } from './components/singup/singup.component';
 import { SinginComponent } from './components/singin/singin.component';
 import { HiddenpageComponent } from './components/hidden-page/hiddenpage/hiddenpage.component';
 import { UploadFormComponent } from './components/upload-form/upload-form.component';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   { path: 'singup', component: SingupComponent },
@@ -31,7 +33,9 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpModule,
+    ToastModule.forRoot(),
     FormsModule,
     RouterModule.forRoot(
       appRoutes,

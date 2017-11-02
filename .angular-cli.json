@@ -19,11 +19,11 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "../node_modules/ng2-toastr/bundles/ng2-toastr.min.css",
         "bower_components/bootstrap/dist/css/bootstrap.min.css",
         "font-awesome-4.7.0/css/font-awesome.min.css",
         "styles.css"
       ],
-      "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
