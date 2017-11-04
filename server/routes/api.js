@@ -8,6 +8,7 @@ const authenticationController = require('../controllers/authenticationControlle
 const taskController = require('../controllers/taskController');
 const imagesController = require('../controllers/imagesController');
 const profileController = require('../controllers/profileController');
+const generatePeople =require('../services/generate');
 const mongoose = require('mongoose');
 require('../config/passport')(passport);
 
@@ -22,6 +23,7 @@ router.post('/task/api', taskController.addTask);
 router.post('/image', imagesController.decodeImg);
 router.get('/profile/:id', profileController.getUserProgile);
 router.post('/profile/edit/:id', profileController.editUserProfile);
+router.post('/generate', generatePeople.generate);
 
 router.get('/memberinfo', passport.authenticate('jwt', { session: false}), function(req, res) {
   var token = getToken(req.headers);

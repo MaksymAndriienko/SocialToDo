@@ -30,6 +30,7 @@ export class UsersService {
   controleError(data){
     if(data.success){
       localStorage.setItem('id_token', data.token);
+      this.toastr.success(data.msg, 'Success!');
       this.router.navigate(['/']);
     }
     else{
