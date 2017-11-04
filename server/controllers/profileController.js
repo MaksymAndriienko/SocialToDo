@@ -1,11 +1,12 @@
 var mongoose = require('mongoose');
 var config = require('../config/database');
 var User = require('../database/users');
+var decodeInformation = require('../services/decodeInformation');
 
 module.exports.getUserProgile = function(req, res){
-
+    var userId = decodeInformation.getInformation(req.params.id);
     User.findOne({
-        _id: mongoose.Types.ObjectId(req.params.id)
+        _id: mongoose.Types.ObjectId(userId._id)
     }, function(err, user){
         if(err) throw err;
 
@@ -16,7 +17,7 @@ module.exports.getUserProgile = function(req, res){
             })
         }
         else{
-            console.log(user);
+            res.send(user);
         }
     });
 

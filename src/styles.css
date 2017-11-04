@@ -53,7 +53,7 @@ a:focus{
     font-weight: bold;
 }
 body#random-wall {
-    background: url("image/dream.jpg") no-repeat center center fixed;
+    background: url("/assets/image/dream.jpg") no-repeat center center fixed;
     background-size: cover;
 }
 .wrap{
@@ -164,7 +164,7 @@ body#random-wall {
 }
 
 .main-goal{
-    background-image: url(/image/trip.jpg);
+    background-image: url("/assets/image/trip.jpg");
     color: #172331;
 }
 
@@ -298,7 +298,7 @@ body#random-wall {
 }
 
 .italian{
-    background: url(/image/italian1.jpg) no-repeat;
+    background: url("/assets/image/italian1.jpg") no-repeat;
     -moz-background-size: 100%; /* Firefox 3.6+ */
     -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
     -o-background-size: 100%; /* Opera 9.6+ */
@@ -314,7 +314,7 @@ body#random-wall {
 }
 
 .parashut{
-    background: url(/image/parashyutist.jpg) no-repeat;
+    background: url("/assets/image/parashyutist.jpg") no-repeat;
     -moz-background-size: 100%; /* Firefox 3.6+ */
     -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
     -o-background-size: 100%; /* Opera 9.6+ */
@@ -419,7 +419,7 @@ body#random-wall {
 }
 
 .photo-section {
-    background: url("/image/main-photo1.jpg") no-repeat center;
+    background: url("/assets/image/dream.jpg") no-repeat center;
     -moz-background-size: cover; /* Firefox 3.6+ */
     -webkit-background-size: cover; /* Safari 3.1+ и Chrome 4.0+ */
     -o-background-size: cover; /* Opera 9.6+ */
@@ -431,7 +431,6 @@ body#random-wall {
     filter: blur(1px);
     z-index: 99;
     /*padding: 200px 0;*/
-    background-attachment: fixed;
 }
 
 .photo-section:after {
@@ -526,20 +525,34 @@ body#random-wall {
 
 .second {
     padding-top: 100vh;
-    padding-bottom: 1000px;
+    padding-bottom: 30px;
+    /*padding-bottom: 1000px;*/
     width: 100%;
-    background: url("/image/dream.jpg");
+    background: url("/assets/image/dream.jpg");
+    background-size: cover;
     background-attachment: fixed;
 }
 
 .second>.wrap {
+
+    margin-top: 30px;
     background: rgba(32,39,52,.7);
     padding: 50px 20px;
+    display: flex;
+    justify-content: space-between;
 }
 
-.left-panel li i{
+.left-panel {
+    margin-top: 64px;
+    width: 20%;
+    /*float: left;*/
+    display: inline-block;
+}
+
+.left-panel li a{
     color: #fff;
-    margin-bottom: 10px;
+    font-size: 18px;
+    line-height: 30px;
 }
 
 .signout:before {
@@ -548,15 +561,116 @@ body#random-wall {
     height: 1px;
     background-color: #fff;
     display: block;
+    margin-bottom: 15px;
+}
+
+.edit {
     margin-bottom: 20px;
 }
 
-.left-panel ul li a:hover::after {
-    content: attr(data-title);
-    color: red;
+
+.second .input-group{
+    margin-bottom: 30px;
+    float: right;
+    width: 360px;
 }
 
-.wrap .input-group {
+.second .input-group input{
+    background-color: #fff;
+    border-color: #172331;
+    color: #000;
+    border-radius: 5px!important;
+}
+
+.second .input-group input::-webkit-input-placeholder {color:#555;}
+.second .input-group input::-moz-placeholder          {color:#555;}/* Firefox 19+ */
+.second .input-group input:-moz-placeholder           {color:#555;}/* Firefox 18- */
+.second .input-group input:-ms-input-placeholder      {color:#555;}
+
+.line-blocks {
+    width: 80%;
+    /*float: right;*/
+    display: inline-block;
+}
+
+.line-block {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background: #ffffff;
+    border: solid 1px #172331;
+    border-radius: 5px!important;
+    padding: 20px;
+}
+
+.line-block-image {
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.line-block-image img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.center {
+    text-align: center;
+}
+
+.line-block-text {
+    /*padding: 20px;*/
+    text-align: justify;
+    width: calc(100% - 300px);
+}
+
+.line-block-text p {
     margin-bottom: 10px;
-    float: right;
+}
+
+.size22 {
+    font-size: 22px;
+    line-height: 25px;
+}
+
+.line-block-about {
+    display: flex;
+    justify-content: center;
+    line-height: 60px;
+}
+
+.line-block-about div {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.line-block-about a {
+    margin-left: 5px;
+    color: #696969;
+}
+
+.line-block-about i {
+    color: #696969;
+}
+
+.process:hover a {
+    text-decoration: underline;
+}
+
+.blue:hover i {
+    color: #00008b;
+}
+
+.green:hover i {
+    color: #008000;
+}
+
+.like:hover a {
+    text-decoration: underline;
+}
+
+.like:hover i {
+    color: #ff0000;
 }
