@@ -17,11 +17,13 @@ import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ProfileComponent } from './components/profile/profile.component';
 import { NewTaskComponent } from './components/new-task/new-task.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
 const appRoutes: Routes = [
   { path: 'singup', component: SingupComponent },
   { path: 'singin', component: SinginComponent },
   { path: 'new-task', component: NewTaskComponent },
+  { path: 'edit-profile', component: EditProfileComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'profile/:username', component: ProfileComponent },
   { path: 'hidden', component: HiddenpageComponent, canActivate: [AuthService] },
@@ -37,7 +39,8 @@ const appRoutes: Routes = [
     UploadFormComponent,
     ImageCropperComponent,
     ProfileComponent,
-    NewTaskComponent
+    NewTaskComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
