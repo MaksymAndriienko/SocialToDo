@@ -14,8 +14,11 @@ module.exports.addTask = function(req, res){
 
         else{
             var newTask = new Task({
-                user: decode.firstname,
+                user: decode.username,
                 userId: decode._id,
+                title: req.body.title,
+                proces: req.body.proces,
+                imgage: req.body.image,
                 content: req.body.content
             });
             newTask.save(function(err){
@@ -24,6 +27,26 @@ module.exports.addTask = function(req, res){
                 }
                 res.json({success: true, msg: 'Successful created new task.'});
             });
+        }
+    })
+}
+
+module.exports.getTasks = function(req, res){
+    var decode = jwt.decode(req.params.id, config.secret);
+    Task.find({
+        userId: decode._id
+    }, function(error, data){
+        if(error){
+            throw error;
+        }
+        else if(!data){
+            res.send({
+                success: false,
+                msg: 'Not found tasks'
+            })
+        }
+        else{
+            res.send(data);
         }
     })
 }

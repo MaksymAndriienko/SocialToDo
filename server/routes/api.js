@@ -20,6 +20,7 @@ router.get('/', (req, res) => {
 router.post('/user/signup', authenticationController.signup);
 router.post('/user/authentication', authenticationController.signin);
 router.post('/task/api', taskController.addTask);
+router.get('/task/gettasks/:id', taskController.getTasks);
 router.post('/image', imagesController.decodeImg);
 router.get('/profile/:id', profileController.getUserProgile);
 router.post('/profile/edit/:id', profileController.editUserProfile);

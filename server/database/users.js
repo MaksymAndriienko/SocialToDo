@@ -12,11 +12,43 @@ var userSchema = new Schema({
       type: String,
       required: true
     },
-    firstname: String,
-    lastname: String,
-    gender: String,
+    firstname: {
+      type: String,
+      default: ''
+    },
+    lastname: {
+      type: String,
+      default: ''
+    },
+    about: {
+      type: String,
+      default: ''
+    },
+    birthday: {
+      type: String,
+      default: ''
+    },
+    languages: {
+      type: String,
+      default: ''
+    },
+    lives: {
+      type: String,
+      default: ''
+    },
+    from: {
+      type: String,
+      default: ''
+    },
+    gender: {
+      type: String,
+      default: ''
+    },
     email: String,
-    avatar: String
+    avatar: {
+      type: String,
+      default: ''
+    }
   });
 
 userSchema.pre('save', function(next){

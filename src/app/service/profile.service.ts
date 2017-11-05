@@ -21,4 +21,11 @@ export class ProfileService {
     .map(res => res.json());
   }
 
+  getTasksProfile(){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:3000/api/task/gettasks/' + this.userID)
+    .map(res => res.json());
+  }
+
 }

@@ -13,10 +13,22 @@ export class ProfileComponent implements OnInit {
     password: String,
     firstname: String,
     lastname: String,
+    about: String,
+    birthday: String,
+    languages: String,
+    lives: String,
+    from: String,
     gender: String,
     email: String,
     avatar: String
   };
+
+  tasks = {
+    title: String,
+    proces: String,
+    image: String,
+    content: String
+  }
 
   constructor(private profileService: ProfileService) { }
 
@@ -24,11 +36,12 @@ export class ProfileComponent implements OnInit {
     this.profileService.getInformationProfile().subscribe(
       data => this.user = data,
       error => console.log(error)
-    );;
-  }
+    );
 
-  showUser(){
-    console.log(this.user);
+    this.profileService.getTasksProfile().subscribe(
+      data => this.tasks = data,
+      error => console.log(error)
+    )
   }
 
 }
