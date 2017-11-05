@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ProfileService } from '../../service/profile.service';
 
 @Component({
@@ -30,18 +31,35 @@ export class ProfileComponent implements OnInit {
     content: String
   }
 
-  constructor(private profileService: ProfileService) { }
+  usernameShow: String
+
+  constructor(private profileService: ProfileService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.profileService.getInformationProfile().subscribe(
-      data => this.user = data,
-      error => console.log(error)
-    );
-
-    this.profileService.getTasksProfile().subscribe(
-      data => this.tasks = data,
-      error => console.log(error)
-    )
+    this.route.params.subscribe(params => {
+      this.usernameShow = params['username'];
+    });
+    
+    if(!this.usernameShow){
+      this.profileService.getInformationProfile().subscribe(
+        data => this.user = data,
+        error => console.log(error)
+      );
+      this.profileService.getTasksProfile().subscribe(
+        data => this.tasks = data,
+        error => console.log(error)
+      );
+    }
+    else{
+      this.profileService.getInformationProfileAnother(this.usernameShow).subscribe(
+        data => this.user = data,
+        error => console.log(error)
+      );
+      this.profileService.getTasksProfileAnother(this.usernameShow).subscribe(
+        data => this.tasks = data,
+        error => console.log(error)
+      );
+    }
   }
 
 }

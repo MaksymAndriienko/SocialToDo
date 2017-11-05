@@ -45,5 +45,23 @@ module.exports.editUserProfile = function(req, res){
         }
         
     });
+}
+
+module.exports.getUserProgileAnother = function(req, res){
+    User.findOne({
+        username: req.params.username
+    }, function(err, user){
+        if(err) throw err;
+        
+        if(!user){
+            res.send({
+                success: false,
+                msg: 'Error, user not find'
+            })
+        }
+        else{
+            res.send(user);
+        }
+    });
 
 }

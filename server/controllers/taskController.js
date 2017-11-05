@@ -4,6 +4,7 @@ var jwt = require('jwt-simple');
 var config = require('../config/database');
 var User = require('../database/users');
 var Task = require('../database/task');
+var Likes = require('../database/likes');
 
 module.exports.addTask = function(req, res){
     var decode = jwt.decode(req.body.token, config.secret);
@@ -35,6 +36,38 @@ module.exports.getTasks = function(req, res){
     var decode = jwt.decode(req.params.id, config.secret);
     Task.find({
         userId: decode._id
+    }, function(error, data){
+        if(error){
+            throw error;
+        }
+        else if(!data){
+            res.send({
+                success: false,
+                msg: 'Not found tasks'
+            })
+        }
+        else{
+            res.send(data);
+        }
+    })
+}
+
+module.exports.setLikes = function(req, res){
+    var like = new Likes({
+        idUser: '1',
+        idTask: '2'
+    });
+    like.save(function(error){
+        if (error) {
+            return res.json({success: false, msg: 'Error save a new like'});
+        }
+        res.json({success: true, msg: 'Successful created new like.'});
+    });
+}
+
+module.exports.getTasksAnother = function(req, res){
+    Task.find({
+        user: req.params.username
     }, function(error, data){
         if(error){
             throw error;
