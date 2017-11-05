@@ -24,12 +24,7 @@ export class ProfileComponent implements OnInit {
     avatar: String
   };
 
-  tasks = {
-    title: String,
-    proces: String,
-    image: String,
-    content: String
-  }
+  tasks: any = [];
 
   usernameShow: String
 

@@ -15,15 +15,12 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav white">
-                    <!-- <li routerLinkActive="active"><a routerLink="/singin" *ngIf="!userService.loggedIn()">Log in<span class="sr-only">(current)</span></a></li>
+                    <li routerLinkActive="active"><a routerLink="/singin"  *ngIf="!userService.loggedIn()">Log in<span class="sr-only">(current)</span></a></li>
                     <li routerLinkActive="active"><a routerLink="/singup" *ngIf="!userService.loggedIn()">Sign up</a></li>
-                    <li><a href="#" *ngIf="userService.loggedIn()">Photos</a></li> -->
-                    
-                   
-                    <li><a href="#">My profile</a></li>
-                    <li><a href="#">News</a></li>
-                    <li><a href="#">New goal</a></li>
-                    <li><a href="#"> Find friends</a></li>
+                    <li routerLinkActive="active"><a routerLink="/profile" *ngIf="userService.loggedIn()">My profile</a></li>
+                    <li routerLinkActive="active"><a routerLink="/news" *ngIf="userService.loggedIn()">News</a></li>
+                    <li routerLinkActive="active"><a routerLink="/new-goal" *ngIf="userService.loggedIn()">New goal</a></li>
+                    <li routerLinkActive="active"><a routerLink="/find-friends" *ngIf="userService.loggedIn()"> Find friends</a></li>
 
                 </ul>
 
@@ -36,8 +33,8 @@
                 <!-- <ul *ngIf="userService.loggedIn()" class="nav navbar-nav navbar-right white"> -->
                 <ul class="nav navbar-nav navbar-right white">
                     
-                    <!-- <li><a (click)="userService.logout()" *ngIf="userService.loggedIn()"> Logout</a></li> -->
-                    <li><a (click)="userService.logout()"> Logout</a></li>
+                    <li><a (click)="userService.logout()" *ngIf="userService.loggedIn()"> Logout</a></li>
+                    <!-- <li><a (click)="userService.logout()"> Logout</a></li> -->
                     
                 </ul>
 

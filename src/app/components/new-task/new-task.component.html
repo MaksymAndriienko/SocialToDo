@@ -1,13 +1,13 @@
 <div class="container">
     <div class="card card-container">
       <p class="header"> Create new goal </p>
-      <form class="form-new-task" role="form">
+      <form class="form-new-task" role="form" (submit)="createGoal($event)">
         <fieldset>
           <div class="form-group">
-            <input  type="text" id="title" name="title" required="required" class="form-control" placeholder="Title" autofocus/>
+            <input  type="text" id="title" name="title" [(ngModel)]="title" required="required" class="form-control" placeholder="Title" autofocus/>
           </div>
           <div class="form-group">
-            <textarea id="describe" name="describe" class="form-control" required="required" rows="7" placeholder="Describe your new goal"></textarea>
+            <textarea id="describe" name="describe" [(ngModel)]="describe" class="form-control" required="required" rows="7" placeholder="Describe your new goal"></textarea>
           </div>
           <div class="photo-goal">
 
@@ -18,7 +18,7 @@
           </div>
           <div class="line-separator"></div>
           <div class="submit">
-            <input type="submit" id="_submit" name="submit" value="Create" class="btn-lg btn-primary btn-block btn-signin"/>
+            <input type="submit" id="_submit" name="submit" click="createGoal($event)" value="Create" class="btn-lg btn-primary btn-block btn-signin"/>
           </div>
         </fieldset>
       </form>

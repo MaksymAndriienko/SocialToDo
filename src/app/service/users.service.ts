@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { tokenNotExpired } from 'angular2-jwt';
 import 'rxjs/add/operator/map';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
-import { ViewContainerRef } from '@angular/core';
+import {ViewContainerRef} from '@angular/core';
 
 @Injectable()
 export class UsersService {
@@ -31,7 +31,6 @@ export class UsersService {
     if(data.success){
       localStorage.setItem('id_token', data.token);
       this.toastr.success(data.msg, 'Success!');
-      this.router.navigate(['/']);
     }
     else{
       this.toastr.error(data.msg, 'Oops!');

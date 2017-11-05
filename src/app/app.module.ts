@@ -2,10 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes, CanActivate} from '@angular/router';
+import { ViewContainerRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {ImageCropperComponent} from 'ng2-img-cropper';
 import { AuthService } from './service/auth.service';
 import { UsersService } from './service/users.service';
+import { GoalService } from './service/goal.service';
+import { NewTaskComponent } from './components/new-task/new-task.component';
 import { UploadImageService } from './service/upload-image.service';
 import { ProfileService } from './service/profile.service';
 import { AppComponent } from './app.component';
@@ -16,12 +19,12 @@ import { UploadFormComponent } from './components/upload-form/upload-form.compon
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ProfileComponent } from './components/profile/profile.component';
-import { NewTaskComponent } from './components/new-task/new-task.component';
+
 
 const appRoutes: Routes = [
   { path: 'singup', component: SingupComponent },
   { path: 'singin', component: SinginComponent },
-  { path: 'new-task', component: NewTaskComponent },
+  { path: 'new-goal', component: NewTaskComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'profile/:username', component: ProfileComponent },
   { path: 'hidden', component: HiddenpageComponent, canActivate: [AuthService] },
@@ -51,6 +54,7 @@ const appRoutes: Routes = [
     )
   ],
   providers: [
+    GoalService,
     UsersService,
     AuthService,
     UploadImageService,
