@@ -16,6 +16,11 @@ module.exports.signup = function(req, res){
             password: req.body.password,
             firstname: req.body.firstname,
             lastname: req.body.lastname,
+            about: req.body.about,
+            birthday: req.body.birthday,
+            languages: req.body.languages,
+            lives: req.body.lives,
+            from: req.body.from,
             gender: req.body.gender,
             email: req.body.email,
             avatar: req.body.avatar

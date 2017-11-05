@@ -20,10 +20,14 @@ router.get('/', (req, res) => {
 router.post('/user/signup', authenticationController.signup);
 router.post('/user/authentication', authenticationController.signin);
 router.post('/task/api', taskController.addTask);
+router.get('/task/gettasks/:id', taskController.getTasks);
+router.get('/task/gettasks/another/:username', taskController.getTasksAnother);
 router.post('/image', imagesController.decodeImg);
 router.get('/profile/:id', profileController.getUserProgile);
+router.get('/profile/another/:username', profileController.getUserProgileAnother);
 router.post('/profile/edit/:id', profileController.editUserProfile);
 router.post('/generate', generatePeople.generate);
+router.post('/task/like', taskController.setLikes);
 
 router.get('/memberinfo', passport.authenticate('jwt', { session: false}), function(req, res) {
   var token = getToken(req.headers);

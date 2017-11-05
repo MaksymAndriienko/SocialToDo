@@ -23,6 +23,7 @@ const appRoutes: Routes = [
   { path: 'singin', component: SinginComponent },
   { path: 'new-task', component: NewTaskComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'profile/:username', component: ProfileComponent },
   { path: 'hidden', component: HiddenpageComponent, canActivate: [AuthService] },
   { path: 'upload-images', component: UploadFormComponent, canActivate: [AuthService] }
 ];

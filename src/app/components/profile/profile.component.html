@@ -8,19 +8,18 @@
             </div>
             <div class="name-about">
                 <p class="name">{{user.firstname}} {{user.lastname}}</p>
-                <p class="about size18">Hi there! My name is Monika. I am from Spain. I am a student. I like to
-                    travel and cook. Please follow me.</p>
+                <p class="about size18">{{user.about}}</p>
                 <ul class="size18">
-                    <li><span class="bold">Birth Date:</span><span> May 17</span></li>
-                    <li><span class="bold">Languages:</span><span> Spain, English, Portuguese</span></li>
-                    <li><span class="bold">Lives in</span><span> Barcelona</span></li>
-                    <li><span class="bold">From</span><span> Madrid</span></li>
+                    <li><span class="bold">Birth Date:</span><span> {{user.birthday}}</span></li>
+                    <li><span class="bold">Languages:</span><span> {{user.languages}}</span></li>
+                    <li><span class="bold">Lives in</span><span> {{user.lives}}</span></li>
+                    <li><span class="bold">From</span><span> {{user.from}}</span></li>
                 </ul>
             </div>
         </div>
         <div class="line">
             <div class="line-first">
-                <a href="#"><ul><li class="size40">21</li><li class="size18">Goals</li></ul></a>
+                <a href="#"><ul><li class="size40">{{tasks?.length}}</li><li class="size18">Goals</li></ul></a>
             </div>
             <div class="line-second">
                 <a href="#"><ul><li class="size40">25</li><li class="size18">Followers</li></ul></a>
@@ -50,50 +49,21 @@
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="What is your new goal..">
             </div><!-- /input-group -->
-            <div class="line-block">
+            <div class="line-block" *ngFor='let task of tasks'>
                 <div class="line-block-text">
-                    <p class="bold size22 center">My main goal</p>
-                    <span class="size18"><span class="bold">Trip around the world.</span>
-                        Countless people travel abroad, have amazing, life-altering experiences,
-                        and return home feeling a strange mix of emotions while trying to
-                        reconcile the experiences they had abroad with their lives back
-                        home — wherever home may be.</span>
+                    <p class="bold size22 center">{{task.title}}</p>
+                    <span class="size18">{{task.content}}</span>
                     <div class="line-block-about">
-                        <div class="process blue"><i class="fa fa-lg fa-cogs" aria-hidden="true"></i><a href="#">In the process</a></div>
+                        <div class="process green"><i class="fa fa-lg fa-check" aria-hidden="true"></i><a href="#">{{task.proces}}</a></div>
                         <div class="like"><i class="fa fa-lg fa-heart" aria-hidden="true"></i><a href="#">Like</a></div>
                         <!--<div class="comment"><i class="fa fa-lg fa-comment" aria-hidden="true"></i><a href="#">Comment</a></div>-->
                     </div>
                 </div>
                 <div class="line-block-image">
-                    <img src="/assets/image/trip.jpg">
+                    <img src="{{task.image}}">
                 </div>
             </div>
-            <div class="line-block">
-                <div class="line-block-text">
-                    <p class="bold size22 center">Speak Italian</p>
-                    <span class="size18"><span class="bold">Intermediate level.</span>
-                        During the Middle Ages, the established written language in Europe was
-                        Latin. With the overwhelming majority of people illiterate, however,
-                        only a tiny handful were well versed in the language. In Italy, as
-                        in all other countries, the majority would instead speak the vernacular
-                        (native tongue) of their region. These dialects (as they are commonly referred to as)
-                        were derived from Vulgar Latin over the course of centuries, evolving naturally
-                        unaffected by formal standards and teachings. However, it should be noted that
-                        these Languages of Italy are not truly "dialects" of Standard Italian, evolving
-                        independently (and alongside) of the predecessor of Standard Italian. They are
-                        often mutually unintelligible,
-                        and are better classified as distinct languages.</span>
-                    <div class="line-block-about">
-                        <div class="process green"><i class="fa fa-lg fa-check" aria-hidden="true"></i><a href="#">Done</a></div>
-                        <div class="like"><i class="fa fa-lg fa-heart" aria-hidden="true"></i><a href="#">Like</a></div>
-                        <!--<div class="comment"><i class="fa fa-lg fa-comment" aria-hidden="true"></i><a href="#">Comment</a></div>-->
-                    </div>
-                </div>
-                <div class="line-block-image">
-                    <img src="/assets/image/italian.jpg">
-                </div>
-            </div>
-            <div class="line-block">
+            <!-- <div class="line-block">
                 <div class="line-block-text">
                     <p class="bold size22 center">Parachute jump</p>
                     <span class="size18"><span class="bold">Skydiving.</span>
@@ -107,13 +77,12 @@
                     <div class="line-block-about">
                         <div class="process blue"><i class="fa fa-lg fa-cogs" aria-hidden="true"></i><a href="#">In the process</a></div>
                         <div class="like"><i class="fa fa-lg fa-heart" aria-hidden="true"></i><a href="#">Like</a></div>
-                        <!--<div class="comment"><i class="fa fa-lg fa-comment" aria-hidden="true"></i><a href="#">Comment</a></div>-->
                     </div>
                 </div>
                 <div class="line-block-image">
                     <img src="/assets/image/parashyutist.jpg">
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </section>
