@@ -16,10 +16,12 @@ import { UploadFormComponent } from './components/upload-form/upload-form.compon
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ProfileComponent } from './components/profile/profile.component';
+import { NewTaskComponent } from './components/new-task/new-task.component';
 
 const appRoutes: Routes = [
   { path: 'singup', component: SingupComponent },
   { path: 'singin', component: SinginComponent },
+  { path: 'new-task', component: NewTaskComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'hidden', component: HiddenpageComponent, canActivate: [AuthService] },
   { path: 'upload-images', component: UploadFormComponent, canActivate: [AuthService] }
@@ -33,7 +35,8 @@ const appRoutes: Routes = [
     HiddenpageComponent,
     UploadFormComponent,
     ImageCropperComponent,
-    ProfileComponent
+    ProfileComponent,
+    NewTaskComponent
   ],
   imports: [
     BrowserModule,

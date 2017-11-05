@@ -15,10 +15,15 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav white">
-                    <li routerLinkActive="active"><a routerLink="/singin" *ngIf="!userService.loggedIn()">Log in<span class="sr-only">(current)</span></a></li>
+                    <!-- <li routerLinkActive="active"><a routerLink="/singin" *ngIf="!userService.loggedIn()">Log in<span class="sr-only">(current)</span></a></li>
                     <li routerLinkActive="active"><a routerLink="/singup" *ngIf="!userService.loggedIn()">Sign up</a></li>
-                    <li><a href="#" *ngIf="userService.loggedIn()">Messages</a></li>
-                    <li><a href="#" *ngIf="userService.loggedIn()">Photos</a></li>
+                    <li><a href="#" *ngIf="userService.loggedIn()">Photos</a></li> -->
+                    
+                   
+                    <li><a href="#">My profile</a></li>
+                    <li><a href="#">News</a></li>
+                    <li><a href="#">New goal</a></li>
+                    <li><a href="#"> Find friends</a></li>
 
                 </ul>
 
@@ -28,9 +33,12 @@
                     </div>
                     <button type="submit" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
                 </form>
-                <ul *ngIf="userService.loggedIn()" class="nav navbar-nav navbar-right white">
-                    <li><a href="#"> Find friends</a></li>
-                    <li><a (click)="userService.logout()" *ngIf="userService.loggedIn()"> Logout</a></li>
+                <!-- <ul *ngIf="userService.loggedIn()" class="nav navbar-nav navbar-right white"> -->
+                <ul class="nav navbar-nav navbar-right white">
+                    
+                    <!-- <li><a (click)="userService.logout()" *ngIf="userService.loggedIn()"> Logout</a></li> -->
+                    <li><a (click)="userService.logout()"> Logout</a></li>
+                    
                 </ul>
 
             </div><!-- /.navbar-collapse -->

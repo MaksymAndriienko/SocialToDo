@@ -1,0 +1,100 @@
+
+.card .fa{
+    padding: 8px;
+}
+
+.card-container.card {
+    text-align: center;
+    max-width: 600px;
+    padding: 30px 70px;
+    margin-top: 150px;
+}
+
+.btn {
+    font-weight: 700;
+    height: 36px;
+    user-select: none;
+    cursor: default;
+}
+
+
+.card {
+    background-color: rgba(32,39,52,.7);
+    /* just in case there no content*/
+    padding: 20px 25px 30px;
+    margin: 0 auto 25px;
+    margin-top: 50px;
+
+}
+
+.header{
+    text-align: center;
+    color: #fff;
+    font-size: 24pt;
+    padding-bottom:30px;
+}
+
+.submit{
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+.line-separator{
+    margin-top: 30px;
+    height:1px;
+    background:#455996;
+    border-bottom:#455996;
+
+}
+
+#describe {
+    resize: none;
+}
+
+.line-block-about {
+    display: flex;
+    justify-content: center;
+    /* line-height: 60px; */
+}
+
+.line-block-about div {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.line-block-about span {
+    margin-left: 5px;
+    color: #fff;
+}
+
+.line-block-about i {
+    color: #fff;
+}
+
+.process:hover span {
+    text-decoration: underline;
+}
+
+.blue:hover i {
+    color: #00008b;
+}
+
+.green:hover i {
+    color: #008000;
+}
+
+.done span {
+    text-decoration: underline;
+}
+
+.notdone span {
+    text-decoration: underline;
+}
+
+.done i {
+    color: #008000;
+}
+
+.notdone i {
+    color: #00008b;
+}

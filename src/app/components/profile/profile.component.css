@@ -1,0 +1,282 @@
+.first {
+    position: relative;
+    margin: 0 auto;
+    font-family: 'Roboto';
+}
+
+.photo-section,
+.wrapper {
+    position: absolute;
+    top:0;
+    right: 0;
+    left:0;
+    /*height: 660px;*/
+    height: 100vh;
+}
+
+.wrapper {
+    margin: 0 auto;
+    height: 100%;
+    max-width: 700px;
+    z-index: 100;
+    color: #fff;
+    /*text-align: center;*/
+    padding-top: 150px;
+}
+
+.photo-section {
+    background: url("/assets/image/dream.jpg") no-repeat center;
+    -moz-background-size: cover; /* Firefox 3.6+ */
+    -webkit-background-size: cover; /* Safari 3.1+ и Chrome 4.0+ */
+    -o-background-size: cover; /* Opera 9.6+ */
+    background-size: cover;
+    -webkit-filter: blur(1px);
+    -moz-filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+    filter: blur(1px);
+    z-index: 99;
+    /*padding: 200px 0;*/
+}
+
+.photo-section:after {
+    content: '';
+    position: absolute;
+    background: rgba(32,39,52,.7);
+    /*background-color: rgba(0,0,0,.5);*/
+    top:0;
+    right: 0;
+    left: 0;
+    /*height: 660px;*/
+    height: 100vh;
+}
+
+.photo-name {
+    display: flex;
+    justify-content: space-between;
+}
+
+.photo {
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+}
+
+.photo img {
+    /*max-width: 100%;*/
+    /*max-height: 100%;*/
+}
+
+.name-about{
+
+    width: 400px;
+    text-align: left;
+}
+
+.name {
+    font-size: 40px;
+    margin-bottom: 20px;
+    font-weight:100;
+}
+
+.about {
+    margin-bottom: 20px;
+}
+
+.size18 {
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.size40 {
+    font-size: 40px;
+    line-height: 45px;
+}
+
+.line {
+    padding: 40px 0;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+    /*font-size: 40px;*/
+    border-bottom: solid 1px #999;
+    border-top: solid 1px #999;
+    line-height: 70px;
+    text-align: center;
+}
+
+
+.line a {
+    color: #fff;
+
+}
+
+.line-second:before {
+     content: '';
+     background-color: #999;
+     width: 1px;
+     height: 70px;
+     position: absolute;
+     left:207px;
+ }
+
+.line-third:before {
+    content: '';
+    background-color: #999;
+    width: 1px;
+    height: 70px;
+    position: absolute;
+    right:247px;
+}
+
+.second {
+    padding-top: 100vh;
+    padding-bottom: 30px;
+    /*padding-bottom: 1000px;*/
+    width: 100%;
+    background: url("/assets/image/dream.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.second>.wrap {
+
+    margin-top: 30px;
+    background: rgba(32,39,52,.7);
+    padding: 50px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-panel {
+    margin-top: 64px;
+    width: 20%;
+    /*float: left;*/
+    display: inline-block;
+}
+
+.left-panel li a{
+    color: #fff;
+    font-size: 18px;
+    line-height: 30px;
+}
+
+.signout:before {
+    content: '';
+    width: 50px;
+    height: 1px;
+    background-color: #fff;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.edit {
+    margin-bottom: 20px;
+}
+
+
+.second .input-group{
+    margin-bottom: 30px;
+    float: right;
+    width: 360px;
+}
+
+.second .input-group input{
+    background-color: #fff;
+    border-color: #172331;
+    color: #000;
+    border-radius: 5px!important;
+}
+
+.second .input-group input::-webkit-input-placeholder {color:#555;}
+.second .input-group input::-moz-placeholder          {color:#555;}/* Firefox 19+ */
+.second .input-group input:-moz-placeholder           {color:#555;}/* Firefox 18- */
+.second .input-group input:-ms-input-placeholder      {color:#555;}
+
+.line-blocks {
+    width: 80%;
+    /*float: right;*/
+    display: inline-block;
+}
+
+.line-block {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background: #ffffff;
+    border: solid 1px #172331;
+    border-radius: 5px!important;
+    padding: 20px;
+}
+
+.line-block-image {
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.line-block-image img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.center {
+    text-align: center;
+}
+
+.line-block-text {
+    /*padding: 20px;*/
+    text-align: justify;
+    width: calc(100% - 300px);
+}
+
+.line-block-text p {
+    margin-bottom: 10px;
+}
+
+.size22 {
+    font-size: 22px;
+    line-height: 25px;
+}
+
+.line-block-about {
+    display: flex;
+    justify-content: center;
+    line-height: 60px;
+}
+
+.line-block-about div {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.line-block-about a {
+    margin-left: 5px;
+    color: #696969;
+}
+
+.line-block-about i {
+    color: #696969;
+}
+
+.process:hover a {
+    text-decoration: underline;
+}
+
+.blue:hover i {
+    color: #00008b;
+}
+
+.green:hover i {
+    color: #008000;
+}
+
+.like:hover a {
+    text-decoration: underline;
+}
+
+.like:hover i {
+    color: #ff0000;
+}
