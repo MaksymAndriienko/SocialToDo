@@ -1,0 +1,10 @@
+.logout {
+    display: flex;
+    justify-content: center;
+}
+
+.logout i {
+    color: #fff;
+    line-height: 50px;
+    vertical-align: middle;
+}
