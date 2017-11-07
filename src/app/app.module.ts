@@ -19,7 +19,7 @@ import { UploadFormComponent } from './components/upload-form/upload-form.compon
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ProfileComponent } from './components/profile/profile.component';
-
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
 const appRoutes: Routes = [
   { path: 'singup', component: SingupComponent },
@@ -40,7 +40,8 @@ const appRoutes: Routes = [
     UploadFormComponent,
     ImageCropperComponent,
     ProfileComponent,
-    NewTaskComponent
+    NewTaskComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
