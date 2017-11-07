@@ -1,23 +1,19 @@
 import { Injectable } from '@angular/core';
 import {Http, Headers} from '@angular/http';
-import { Router } from '@angular/router';
 import { tokenNotExpired } from 'angular2-jwt';
 import 'rxjs/add/operator/map';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
-import { ViewContainerRef } from '@angular/core';
-
 
 @Injectable()
 export class GoalService {
   public token: String;
-  constructor(private http:Http, private router: Router, private toastr: ToastsManager, vRef: ViewContainerRef) {
-    this.toastr.setRootViewContainerRef(vRef);
+  constructor(private http:Http, public toastr: ToastsManager) {
+    
   }
 
   controleError(data){
     if(data.success){
       this.toastr.success(data.msg, 'Success!');
-      this.router.navigate(['/']);
     }
     else{
       this.toastr.error(data.msg, 'Oops!');
@@ -31,7 +27,7 @@ export class GoalService {
     .map(res => res.json())
     .subscribe(
       data => {
-        this.controleError(data)
+        this.controleError(data);
       },
       error => console.log(error)
     );

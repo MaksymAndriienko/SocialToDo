@@ -16,15 +16,17 @@ import { SingupComponent } from './components/singup/singup.component';
 import { SinginComponent } from './components/singin/singin.component';
 import { HiddenpageComponent } from './components/hidden-page/hiddenpage/hiddenpage.component';
 import { UploadFormComponent } from './components/upload-form/upload-form.component';
-import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { CommonModule } from '@angular/common';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
 
 const appRoutes: Routes = [
   { path: 'singup', component: SingupComponent },
   { path: 'singin', component: SinginComponent },
   { path: 'new-goal', component: NewTaskComponent },
+  { path: 'edit-profile', component: EditProfileComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'profile/:username', component: ProfileComponent },
   { path: 'hidden', component: HiddenpageComponent, canActivate: [AuthService] },
@@ -46,8 +48,9 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    HttpModule,
+    CommonModule,
     ToastModule.forRoot(),
+    HttpModule,
     FormsModule,
     RouterModule.forRoot(
       appRoutes,
