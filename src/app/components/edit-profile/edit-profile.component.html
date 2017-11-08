@@ -1,35 +1,35 @@
 <div class="container">
     <div class="card card-container">
       <p class="header"> Edit profile </p>
-      <form class="form-edit-profile" role="form">
+      <form class="form-edit-profile" (submit)="updateProfile($event)" role="form">
         <fieldset>
           <div class="photo-edit">
                 
           </div>
           <div class="form-group">
-            <input  type="text" id="firstName" name="firstName" class="form-control" placeholder="First Name" autofocus/>
+            <input  type="text" id="firstName" name="firstName" [(ngModel)]="user.firstname" class="form-control" placeholder="First Name" autofocus/>
           </div>
           <div class="form-group">
-              <input  type="text" id="lastName" name="lastName" class="form-control" placeholder="Last Name">
+              <input  type="text" id="lastName" name="lastName" [(ngModel)]="user.lastname" class="form-control" placeholder="Last Name">
           </div>
           <div class="form-group">
-              <input  type="date" id="dateBirth" name="dateBirth" class="form-control" placeholder="Last Name">
+              <input  type="date" id="dateBirth" name="dateBirth" [(ngModel)]="user.birthday" class="form-control" placeholder="Last Name">
           </div>
           <div class="form-group">
-            <textarea id="describe" name="describe" class="form-control" required="required" rows="7" placeholder="Describe yourself"></textarea>
+            <textarea id="describe" name="describe" class="form-control" [(ngModel)]="user.about" required="required" rows="7" placeholder="Describe yourself"></textarea>
           </div>
           <div class="form-group">
-              <input  type="text" id="languages" name="languages" class="form-control" placeholder="Languages that you speak" autofocus/>
+              <input  type="text" id="languages" name="languages" [(ngModel)]="user.languages" class="form-control" placeholder="Languages that you speak" autofocus/>
           </div>
           <div class="form-group">
-              <input  type="text" id="lives" name="lives" class="form-control" placeholder="City where you live" autofocus/>
+              <input  type="text" id="lives" name="lives" [(ngModel)]="user.lives" class="form-control" placeholder="City where you live" autofocus/>
           </div>
           <div class="form-group">
-                <input  type="text" id="from" name="from" class="form-control" placeholder="City where you from" autofocus/>
+                <input  type="text" id="from" name="from" [(ngModel)]="user.from" class="form-control" placeholder="City where you from" autofocus/>
           </div>
           <div class="line-separator"></div>
           <div class="submit">
-            <input type="submit" id="_submit" name="submit" value="Save" class="btn-lg btn-primary btn-block btn-signin"/>
+            <input type="submit" id="_submit" (click)="updateProfile($event)" name="submit" value="Save" class="btn-lg btn-primary btn-block btn-signin"/>
           </div>
         </fieldset>
       </form>

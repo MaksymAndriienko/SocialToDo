@@ -1,15 +1,43 @@
 import { Component, OnInit } from '@angular/core';
+import { EditprofileService } from '../../service/editprofile.service';
 
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',
   styleUrls: ['./edit-profile.component.css']
 })
-export class EditProfileComponent implements OnInit {
+export class EditProfileComponent {
 
-  constructor() { }
+  user = {
+    _id: String,
+    username: String,
+    password: String,
+    firstname: String,
+    lastname: String,
+    about: String,
+    birthday: String,
+    languages: String,
+    lives: String,
+    from: String,
+    gender: String,
+    email: String,
+    avatar: String
+  };
 
-  ngOnInit() {
+  constructor(private editprofileService: EditprofileService) { 
+    this.getEditProfie();
+  }
+
+  getEditProfie(){
+    this.editprofileService.getInformetionProfie().subscribe(
+      data => this.user = data,
+      error => console.log(error)
+    );
+  }
+
+  updateProfile(event){
+    event.preventDefault();
+    console.log(event);
   }
 
 }
