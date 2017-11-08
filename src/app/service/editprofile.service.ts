@@ -10,7 +10,9 @@ export class EditprofileService {
   }
 
   saveEditProfile(editProfile){
-    
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/api/profile/edit/' + editProfile._id, JSON.stringify(editProfile), {headers: headers}).subscribe();
   }
 
   getInformetionProfie(){

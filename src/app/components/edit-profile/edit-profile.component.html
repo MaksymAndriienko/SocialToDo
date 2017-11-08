@@ -1,7 +1,7 @@
 <div class="container">
     <div class="card card-container">
       <p class="header"> Edit profile </p>
-      <form class="form-edit-profile" (submit)="updateProfile($event)" role="form">
+      <form class="form-edit-profile" (submit)="updateProfile()" role="form">
         <fieldset>
           <div class="photo-edit">
                 
@@ -29,7 +29,7 @@
           </div>
           <div class="line-separator"></div>
           <div class="submit">
-            <input type="submit" id="_submit" (click)="updateProfile($event)" name="submit" value="Save" class="btn-lg btn-primary btn-block btn-signin"/>
+            <input type="button" id="_submit" (click)="updateProfile(user)" name="submit" value="Save" class="btn-lg btn-primary btn-block btn-signin"/>
           </div>
         </fieldset>
       </form>

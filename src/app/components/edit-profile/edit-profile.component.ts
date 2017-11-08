@@ -10,8 +10,6 @@ export class EditProfileComponent {
 
   user = {
     _id: String,
-    username: String,
-    password: String,
     firstname: String,
     lastname: String,
     about: String,
@@ -19,8 +17,6 @@ export class EditProfileComponent {
     languages: String,
     lives: String,
     from: String,
-    gender: String,
-    email: String,
     avatar: String
   };
 
@@ -35,9 +31,9 @@ export class EditProfileComponent {
     );
   }
 
-  updateProfile(event){
-    event.preventDefault();
-    console.log(event);
+  updateProfile(user){
+    console.log(user);
+    this.editprofileService.saveEditProfile(user);
   }
 
 }
