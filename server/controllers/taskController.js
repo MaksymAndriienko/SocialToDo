@@ -34,9 +34,11 @@ module.exports.addTask = function(req, res){
 
 module.exports.getTasks = function(req, res){
     var decode = jwt.decode(req.params.id, config.secret);
+    var itemToShow = 5;
+    var skipItem = (req.params.page * itemToShow) - itemToShow;
     Task.find({
         userId: decode._id
-    }, function(error, data){
+    }, null, { skip: skipItem, limit: 5 }, function(error, data){
         if(error){
             throw error;
         }

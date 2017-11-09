@@ -21,6 +21,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { CommonModule } from '@angular/common';
+import { NgInviewModule } from 'angular-inport';
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
 
 const appRoutes: Routes = [
@@ -49,6 +50,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    NgInviewModule,
     CommonModule,
     ToastModule.forRoot(),
     HttpModule,
