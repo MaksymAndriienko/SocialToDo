@@ -2,29 +2,35 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes, CanActivate} from '@angular/router';
+import { ViewContainerRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {ImageCropperComponent} from 'ng2-img-cropper';
 import { AuthService } from './service/auth.service';
 import { UsersService } from './service/users.service';
+import { GoalService } from './service/goal.service';
+import { NewTaskComponent } from './components/new-task/new-task.component';
 import { UploadImageService } from './service/upload-image.service';
 import { ProfileService } from './service/profile.service';
+import { EditprofileService } from './service/editprofile.service';
 import { AppComponent } from './app.component';
 import { SingupComponent } from './components/singup/singup.component';
 import { SinginComponent } from './components/singin/singin.component';
 import { HiddenpageComponent } from './components/hidden-page/hiddenpage/hiddenpage.component';
 import { UploadFormComponent } from './components/upload-form/upload-form.component';
-import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ProfileComponent } from './components/profile/profile.component';
-import { NewTaskComponent } from './components/new-task/new-task.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { NewsComponent } from './components/news/news.component';
+import { CommonModule } from '@angular/common';
+import { NgInviewModule } from 'angular-inport';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
 
 const appRoutes: Routes = [
   { path: 'singup', component: SingupComponent },
   { path: 'singin', component: SinginComponent },
   { path: 'news', component: NewsComponent },
   { path: 'new-task', component: NewTaskComponent },
+  { path: 'new-goal', component: NewTaskComponent },
   { path: 'edit-profile', component: EditProfileComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'profile/:username', component: ProfileComponent },
@@ -48,8 +54,10 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    HttpModule,
+    NgInviewModule,
+    CommonModule,
     ToastModule.forRoot(),
+    HttpModule,
     FormsModule,
     RouterModule.forRoot(
       appRoutes,
@@ -57,9 +65,11 @@ const appRoutes: Routes = [
     )
   ],
   providers: [
+    GoalService,
     UsersService,
     AuthService,
     UploadImageService,
+    EditprofileService,
     ProfileService
   ],
   bootstrap: [AppComponent]

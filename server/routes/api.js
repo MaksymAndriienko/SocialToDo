@@ -8,6 +8,7 @@ const authenticationController = require('../controllers/authenticationControlle
 const taskController = require('../controllers/taskController');
 const imagesController = require('../controllers/imagesController');
 const profileController = require('../controllers/profileController');
+const followingController = require('../controllers/followingController');
 const generatePeople =require('../services/generate');
 const mongoose = require('mongoose');
 require('../config/passport')(passport);
@@ -20,7 +21,7 @@ router.get('/', (req, res) => {
 router.post('/user/signup', authenticationController.signup);
 router.post('/user/authentication', authenticationController.signin);
 router.post('/task/api', taskController.addTask);
-router.get('/task/gettasks/:id', taskController.getTasks);
+router.get('/task/gettasks/:id/:page', taskController.getTasks);
 router.get('/task/gettasks/another/:username', taskController.getTasksAnother);
 router.post('/image', imagesController.decodeImg);
 router.get('/profile/:id', profileController.getUserProgile);
@@ -28,6 +29,9 @@ router.get('/profile/another/:username', profileController.getUserProgileAnother
 router.post('/profile/edit/:id', profileController.editUserProfile);
 router.post('/generate', generatePeople.generate);
 router.post('/task/like', taskController.setLikes);
+router.post('/follower/new/:userFollowing&:idFollower', followingController.follower);
+router.get('/follower/cheak/:userFollowing&:idFollower', followingController.cheakFollowing);
+router.get('/follower/get/:iduser', followingController.getFollowers);
 
 router.get('/memberinfo', passport.authenticate('jwt', { session: false}), function(req, res) {
   var token = getToken(req.headers);

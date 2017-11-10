@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProfileService } from '../../service/profile.service';
 
+import { BehaviorSubject } from 'rxjs/BehaviorSubject'
+import * as _ from 'lodash'
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -24,18 +27,35 @@ export class ProfileComponent implements OnInit {
     avatar: String
   };
 
-  tasks = {
-    title: String,
-    proces: String,
-    image: String,
-    content: String
-  }
+  finished = false;
+  pages = 1;
+  tasks: any = [];
 
   usernameShow: String
 
   constructor(private profileService: ProfileService, private route: ActivatedRoute) { }
 
+  inview() {
+    console.log('inview!!');
+    this.getTask();
+  }
+
+  private getTask(){
+    if (this.finished) return;
+
+    this.profileService.getTasksProfile(this.pages).subscribe(
+      data => {
+        this.tasks = this.tasks.concat(data);
+        this.finished = false;
+        this.pages += 1;
+      },
+      error => console.log(error)
+    );
+    console.log(this.tasks);
+  }
+
   ngOnInit() {
+    this.getTask();
     this.route.params.subscribe(params => {
       this.usernameShow = params['username'];
     });
@@ -43,10 +63,6 @@ export class ProfileComponent implements OnInit {
     if(!this.usernameShow){
       this.profileService.getInformationProfile().subscribe(
         data => this.user = data,
-        error => console.log(error)
-      );
-      this.profileService.getTasksProfile().subscribe(
-        data => this.tasks = data,
         error => console.log(error)
       );
     }

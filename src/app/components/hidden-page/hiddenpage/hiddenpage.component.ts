@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'app-hiddenpage',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HiddenpageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private toastr: ToastsManager, vRef: ViewContainerRef) {
+    this.toastr.setRootViewContainerRef(vRef);
+  }
 
   ngOnInit() {
   }

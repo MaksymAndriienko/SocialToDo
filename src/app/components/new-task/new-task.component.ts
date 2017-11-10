@@ -1,5 +1,5 @@
-import { Component, NgModule, OnInit } from '@angular/core';
-import { NgClass } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { GoalService } from '../../service/goal.service';
 
 @Component({
   selector: 'app-new-task',
@@ -7,17 +7,37 @@ import { NgClass } from '@angular/common';
   styleUrls: ['./new-task.component.css']
 })
 export class NewTaskComponent implements OnInit {
+  progressBool: Boolean;
+  title: String;
+  describe: String;
+  proces: String;
+  token: String;
 
-  progressBool: Boolean
+  constructor(private goalService: GoalService) { }
 
-  constructor() { }
+  createGoal(event){
+    event.preventDefault();
+    var task = {
+      token: localStorage.getItem('id_token'),
+      title: this.title,
+      content: this.describe,
+      proces: this.proces
+    }
+    this.goalService.addNewGoal(task);
+  }
+
 
   ngOnInit() {
   }
 
   progress(divToShow){
     this.progressBool = divToShow;
-
+    if(divToShow == true){
+      this.proces = "Done";
+    }
+    else{
+      this.proces = "In the process";
+    }
   }
 
 }
