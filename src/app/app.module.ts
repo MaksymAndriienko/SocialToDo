@@ -18,10 +18,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ProfileComponent } from './components/profile/profile.component';
 import { NewTaskComponent } from './components/new-task/new-task.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { NewsComponent } from './components/news/news.component';
 
 const appRoutes: Routes = [
   { path: 'singup', component: SingupComponent },
   { path: 'singin', component: SinginComponent },
+  { path: 'news', component: NewsComponent },
   { path: 'new-task', component: NewTaskComponent },
   { path: 'edit-profile', component: EditProfileComponent },
   { path: 'profile', component: ProfileComponent },
@@ -40,7 +42,8 @@ const appRoutes: Routes = [
     ImageCropperComponent,
     ProfileComponent,
     NewTaskComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    NewsComponent
   ],
   imports: [
     BrowserModule,

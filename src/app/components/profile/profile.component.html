@@ -17,6 +17,12 @@
                 </ul>
             </div>
         </div>
+        <div class="submit">
+                <!-- для своего аккаунта -->
+                <input type="submit" name="submit" click="" value="Edit Profile" class="btn-lg btn-primary btn-block btn-signin"/>
+                <!-- для аккаунта другого пользователья -->
+                <!-- <input type="submit" name="submit" click="" value="Follow" class="btn-lg btn-primary btn-block btn-signin"/> -->
+        </div>
         <div class="line">
             <div class="line-first">
                 <a href="#"><ul><li class="size40">{{tasks?.length}}</li><li class="size18">Goals</li></ul></a>
@@ -35,19 +41,14 @@
     <div class="wrap">
         <div class="left-panel">
             <ul class="menu">
-                <!--<li><a href="#" data-title="Favourites"><i class="fa fa-3x fa-star" aria-hidden="true"></i></a></li>-->
-                <!--<li><a href="#"><i class="fa fa-3x fa-edit" aria-hidden="true"></i></a></li>-->
-                <!--<li class="achieved"><a href="#"><i class="fa fa-3x fa-check" aria-hidden="true"></i></a></li>-->
-                <!--<li class="signout"><a href="#"><i class="fa fa-3x fa-sign-out" aria-hidden="true"></i></a></li>-->
-                <li><a href="#">Favourites</a></li>
-                <li><a href="#">Achieved Goals</a></li>
-                <li class="edit"><a href="#">Edit your profile</a></li>
-                <li class="signout"><a href="#">Sign Out</a></li>
+                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i>Favourites</a></li>
+                <li><a href="#"><i class="fa fa-check" aria-hidden="true"></i>Achieved Goals</a></li>
             </ul>
         </div>
         <div class="line-blocks">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="What is your new goal..">
+                <!-- только для своего аккаунта -->
+                <input *ngIf="usernameShow" type="text" class="form-control" placeholder="What's your new goal..">
             </div><!-- /input-group -->
             <div class="line-block" *ngFor='let task of tasks'>
                 <div class="line-block-text">
@@ -63,7 +64,7 @@
                     <img src="{{task.image}}">
                 </div>
             </div>
-            <!-- <div class="line-block">
+            <div class="line-block">
                 <div class="line-block-text">
                     <p class="bold size22 center">Parachute jump</p>
                     <span class="size18"><span class="bold">Skydiving.</span>
@@ -82,7 +83,7 @@
                 <div class="line-block-image">
                     <img src="/assets/image/parashyutist.jpg">
                 </div>
-            </div> -->
+            </div>
         </div>
     </div>
 </section>
