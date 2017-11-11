@@ -10,6 +10,7 @@ const imagesController = require('../controllers/imagesController');
 const profileController = require('../controllers/profileController');
 const followingController = require('../controllers/followingController');
 const generatePeople =require('../services/generate');
+const newsController =require('../controllers/newsController');
 const mongoose = require('mongoose');
 require('../config/passport')(passport);
 
@@ -33,6 +34,7 @@ router.post('/follower/new/', followingController.follower);
 router.post('/follower/cheak', followingController.cheakFollowing);
 router.get('/follower/get/:iduser', followingController.getFollowers);
 router.post('/follower/getInfore', followingController.testGet);
+router.post('/news/getnews', newsController.getNews);
 
 router.get('/memberinfo', passport.authenticate('jwt', { session: false}), function(req, res) {
   var token = getToken(req.headers);

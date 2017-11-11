@@ -8,6 +8,7 @@ import {ImageCropperComponent} from 'ng2-img-cropper';
 import { AuthService } from './service/auth.service';
 import { UsersService } from './service/users.service';
 import { GoalService } from './service/goal.service';
+import { NewsService } from './service/news.service';
 import { NewTaskComponent } from './components/new-task/new-task.component';
 import { UploadImageService } from './service/upload-image.service';
 import { ProfileService } from './service/profile.service';
@@ -69,6 +70,7 @@ const appRoutes: Routes = [
     GoalService,
     UsersService,
     FollowingService,
+    NewsService,
     AuthService,
     UploadImageService,
     EditprofileService,
