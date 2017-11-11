@@ -22,7 +22,7 @@ router.post('/user/signup', authenticationController.signup);
 router.post('/user/authentication', authenticationController.signin);
 router.post('/task/api', taskController.addTask);
 router.get('/task/gettasks/:id/:page', taskController.getTasks);
-router.get('/task/gettasks/another/:username', taskController.getTasksAnother);
+router.get('/task/gettasks/another/:username/:page', taskController.getTasksAnother);
 router.post('/image', imagesController.decodeImg);
 router.get('/profile/:id', profileController.getUserProgile);
 router.get('/profile/another/:username', profileController.getUserProgileAnother);

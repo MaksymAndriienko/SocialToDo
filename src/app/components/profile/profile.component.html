@@ -19,9 +19,9 @@
         </div>
         <div class="submit">
                 <!-- для своего аккаунта -->
-                <input type="submit" name="submit" click="" value="Edit Profile" class="btn-lg btn-primary btn-block btn-signin"/>
+                <input *ngIf="!usernameShow" type="submit" name="submit" click="" value="Edit Profile" class="btn-lg btn-primary btn-block btn-signin"/>
                 <!-- для аккаунта другого пользователья -->
-                <!-- <input type="submit" name="submit" click="" value="Follow" class="btn-lg btn-primary btn-block btn-signin"/> -->
+                <input *ngIf="usernameShow" type="submit" name="submit" click="" value="Follow" class="btn-lg btn-primary btn-block btn-signin"/>
         </div>
         <div class="line">
             <div class="line-first">

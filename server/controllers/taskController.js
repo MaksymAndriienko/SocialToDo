@@ -68,9 +68,11 @@ module.exports.setLikes = function(req, res){
 }
 
 module.exports.getTasksAnother = function(req, res){
+    var itemToShow = 5;
+    var skipItem = (req.params.page * itemToShow) - itemToShow;
     Task.find({
         user: req.params.username
-    }, function(error, data){
+    }, null, { skip: skipItem, limit: 5 }, function(error, data){
         if(error){
             throw error;
         }

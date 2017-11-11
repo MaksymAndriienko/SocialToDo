@@ -35,10 +35,10 @@ export class ProfileService {
     .map(res => res.json());
   }
 
-  getTasksProfileAnother(usernameShow){
+  getTasksProfileAnother(usernameShow, pageToShow){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/api/task/gettasks/another/' + usernameShow)
+    return this.http.get('http://localhost:3000/api/task/gettasks/another/' + usernameShow + '/' + pageToShow)
     .map(res => res.json());
   }
 

@@ -43,23 +43,37 @@ export class ProfileComponent implements OnInit {
   private getTask(){
     if (this.finished) return;
 
-    this.profileService.getTasksProfile(this.pages).subscribe(
-      data => {
-        this.tasks = this.tasks.concat(data);
-        this.finished = false;
-        this.pages += 1;
-      },
-      error => console.log(error)
-    );
+    if(this.usernameShow){
+      this.profileService.getTasksProfileAnother(this.usernameShow, this.pages).subscribe(
+        data => {
+          this.tasks = this.tasks.concat(data);
+          this.finished = false;
+          this.pages += 1;
+        },
+        error => console.log(error)
+      );
+    }
+    else{
+      this.profileService.getTasksProfile(this.pages).subscribe(
+        data => {
+          this.tasks = this.tasks.concat(data);
+          this.finished = false;
+          this.pages += 1;
+        },
+        error => console.log(error)
+      );
+    }
     console.log(this.tasks);
   }
 
   ngOnInit() {
-    this.getTask();
+    
     this.route.params.subscribe(params => {
       this.usernameShow = params['username'];
     });
     
+    this.getTask();
+
     if(!this.usernameShow){
       this.profileService.getInformationProfile().subscribe(
         data => this.user = data,
@@ -69,10 +83,6 @@ export class ProfileComponent implements OnInit {
     else{
       this.profileService.getInformationProfileAnother(this.usernameShow).subscribe(
         data => this.user = data,
-        error => console.log(error)
-      );
-      this.profileService.getTasksProfileAnother(this.usernameShow).subscribe(
-        data => this.tasks = data,
         error => console.log(error)
       );
     }
