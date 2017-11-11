@@ -29,9 +29,10 @@ router.get('/profile/another/:username', profileController.getUserProgileAnother
 router.post('/profile/edit/:id', profileController.editUserProfile);
 router.post('/generate', generatePeople.generate);
 router.post('/task/like', taskController.setLikes);
-router.post('/follower/new/:userFollowing&:idFollower', followingController.follower);
-router.get('/follower/cheak/:userFollowing&:idFollower', followingController.cheakFollowing);
+router.post('/follower/new/', followingController.follower);
+router.post('/follower/cheak', followingController.cheakFollowing);
 router.get('/follower/get/:iduser', followingController.getFollowers);
+router.post('/follower/getInfore', followingController.testGet);
 
 router.get('/memberinfo', passport.authenticate('jwt', { session: false}), function(req, res) {
   var token = getToken(req.headers);

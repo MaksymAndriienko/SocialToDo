@@ -13,9 +13,9 @@ function saveRelation(){
 
 module.exports.follower = function(req, res){
     var followingDB = new following;
-    followingDB.idFollower = decodeInformation.getInformation(req.params.idFollower);
+    followingDB.idFollower = decodeInformation.getInformation(req.body.idFollower);
     User.findOne({
-        username: req.params.userFollowing
+        username: req.body.userFollowing
     }, function(err, user){
         if(err) throw err;
 
@@ -38,10 +38,19 @@ module.exports.follower = function(req, res){
     
 }
 
+module.exports.testGet = function(req, res){
+    following.findOne({
+        _id: req.body.id
+    }).populate('idFollower')
+    .populate('idFollowering').exec(function(err, data){
+        console.log(data);
+    });
+}
+
 module.exports.cheakFollowing = function(req, res){
-    var idFollower = decodeInformation.getInformation(req.params.idFollower);
+    var idFollower = decodeInformation.getInformation(req.body.idFollower);
     User.findOne({
-        username: req.params.userFollowing
+        username: req.body.userFollowing
     }, function(err, user){
         if(err) throw err;
 
@@ -58,13 +67,13 @@ module.exports.cheakFollowing = function(req, res){
             }, function(err, data){
                 if(err) throw err;
                 else if(!data){
-                    res.send({
+                    res.json({
                         success: false,
                         msg: 'Error'
                     })
                 }
                 else{
-                    res.send({
+                    res.json({
                         success: true,
                         msg: 'Successful'
                     })

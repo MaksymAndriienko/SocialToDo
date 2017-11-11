@@ -3,11 +3,13 @@ var Schema = mongoose.Schema;
 
 var followingShema = new Schema({
     idFollower: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     },
     idFollowering: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     },
     data: {

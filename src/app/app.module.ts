@@ -12,6 +12,7 @@ import { NewTaskComponent } from './components/new-task/new-task.component';
 import { UploadImageService } from './service/upload-image.service';
 import { ProfileService } from './service/profile.service';
 import { EditprofileService } from './service/editprofile.service';
+import { FollowingService } from './service/following.service';
 import { AppComponent } from './app.component';
 import { SingupComponent } from './components/singup/singup.component';
 import { SinginComponent } from './components/singin/singin.component';
@@ -67,6 +68,7 @@ const appRoutes: Routes = [
   providers: [
     GoalService,
     UsersService,
+    FollowingService,
     AuthService,
     UploadImageService,
     EditprofileService,

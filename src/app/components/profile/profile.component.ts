@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProfileService } from '../../service/profile.service';
-
+import { FollowingService } from '../../service/following.service';
+ 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject'
 import * as _ from 'lodash'
 
@@ -31,9 +32,33 @@ export class ProfileComponent implements OnInit {
   pages = 1;
   tasks: any = [];
 
-  usernameShow: String
+  usernameShow: String;
+  isFollower: Boolean = false;
 
-  constructor(private profileService: ProfileService, private route: ActivatedRoute) { }
+  constructor(private profileService: ProfileService, private route: ActivatedRoute, private followingService: FollowingService) { }
+
+  follower(){
+    var newFollower = {
+      userFollowing: this.usernameShow,
+      idFollower: localStorage.getItem('id_token')
+    }
+    this.followingService.addNewFollower(newFollower);
+  }
+
+  checkFollower(){
+    var Follower = {
+      userFollowing: this.usernameShow,
+      idFollower: localStorage.getItem('id_token')
+    }
+    this.followingService.cheakFollower(Follower)
+    .map(res => res.json())
+    .subscribe(
+      data => {
+        this.isFollower = data.success;
+      },
+      error => console.log(error)
+    );
+  }
 
   inview() {
     console.log('inview!!');
@@ -71,7 +96,8 @@ export class ProfileComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.usernameShow = params['username'];
     });
-    
+
+    this.checkFollower();
     this.getTask();
 
     if(!this.usernameShow){
