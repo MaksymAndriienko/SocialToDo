@@ -31,6 +31,9 @@ export class ProfileComponent implements OnInit {
   finished = false;
   pages = 1;
   tasks: any = [];
+  countFollower = 0;
+  countFollowing = 0;
+  countGoals = 0;
 
   usernameShow: String;
   isFollower: Boolean = false;
@@ -43,6 +46,25 @@ export class ProfileComponent implements OnInit {
       idFollower: localStorage.getItem('id_token')
     }
     this.followingService.addNewFollower(newFollower);
+  }
+
+  getCount(){
+    if(localStorage.getItem('id_tokem')){
+      this.profileService.getCountById(localStorage.getItem('id_tokem')).subscribe(
+        data => {
+  
+        },
+        error => console.log(error)
+      );
+    }
+    else{
+      this.profileService.getCountByName(this.usernameShow).subscribe(
+        data => {
+  
+        },
+        error => console.log(error)
+      );
+    }
   }
 
   checkFollower(){

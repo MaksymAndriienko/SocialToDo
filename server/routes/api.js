@@ -28,6 +28,8 @@ router.post('/image', imagesController.decodeImg);
 router.get('/profile/:id', profileController.getUserProgile);
 router.get('/profile/another/:username', profileController.getUserProgileAnother);
 router.post('/profile/edit/:id', profileController.editUserProfile);
+// router.get('/profile/getcountbyid/:id', profileController.getCountByID);
+router.get('/profile/getcountbyname/:name', profileController.getCountByName);
 router.post('/generate', generatePeople.generate);
 router.post('/task/like', taskController.setLikes);
 router.post('/follower/new/', followingController.follower);

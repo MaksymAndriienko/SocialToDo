@@ -20,11 +20,10 @@ export class NewsComponent implements OnInit {
     .map(res => res.json())
     .subscribe(
       data => {
-        console.log(data);
+        this.tasks = data;
       },
       error => console.log(error)
     );
-    console.log('1');
   }
  
 

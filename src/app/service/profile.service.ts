@@ -13,7 +13,21 @@ export class ProfileService {
     this.userID = localStorage.getItem('id_token');
     this.profileInformation = [];
   }
+
+  getCountById(id){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:3000/api/profile/' + id)
+    .map(res => res.json());
+  }
   
+  getCountByName(name){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:3000/api/profile/' + name)
+    .map(res => res.json());
+  }
+
   getInformationProfile(){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
