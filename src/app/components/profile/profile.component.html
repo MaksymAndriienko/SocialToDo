@@ -84,14 +84,12 @@
                     <img src="/assets/image/parashyutist.jpg">
                 </div>
             </div>
+            <div style='text-align: center;' *ngIf="!finished">
+                <img src="/assets/image/Eclipse.svg" alt="">
+              </div>
+            <div *ngIf="finished">
+              End of database... That's all folks!
+            </div>
         </div>
-    </div>
-    <div style='display: block; height: 1px' in-view-container (inview)="inview()" [throttle]="2000">
-    </div>
-      <div *ngIf="!finished">
-          Loading more movies...
-      </div>
-    <div *ngIf="finished">
-      End of database... That's all folks!
     </div>
 </section>

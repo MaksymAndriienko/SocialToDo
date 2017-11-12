@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProfileService } from '../../service/profile.service';
 import { FollowingService } from '../../service/following.service';
- 
-import { BehaviorSubject } from 'rxjs/BehaviorSubject'
-import * as _ from 'lodash'
+
 
 @Component({
   selector: 'app-profile',
@@ -82,9 +80,12 @@ export class ProfileComponent implements OnInit {
     );
   }
 
-  inview() {
-    console.log('inview!!');
-    this.getTask();
+  @HostListener("window:scroll", [])
+  onScroll(): void {
+  if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+      console.log('ENd!!');
+        this.getTask();
+      }
   }
 
   private getTask(){
