@@ -38,9 +38,16 @@ module.exports.getTasks = function(req, res){
     var skipItem = (req.params.page * itemToShow) - itemToShow;
     Task.find({
         userId: decode._id
-    }, null, { skip: skipItem, limit: 5 }, function(error, data){
+    }).populate({
+        path: 'likes',
+        match: {_id: decode._id},
+        select: 'username'
+    })
+        .skip(skipItem)
+        .limit(5)
+        .exec(function(error, data){
         if(error){
-            throw error;
+            console.log(error);
         }
         else if(!data){
             res.send({
@@ -55,15 +62,26 @@ module.exports.getTasks = function(req, res){
 }
 
 module.exports.setLikes = function(req, res){
-    var like = new Likes({
-        idUser: '1',
-        idTask: '2'
-    });
-    like.save(function(error){
-        if (error) {
-            return res.json({success: false, msg: 'Error save a new like'});
+    var decode = jwt.decode(req.body.id_user, config.secret);
+    console.log(decode._id);
+    Task.findByIdAndUpdate({
+        _id: mongoose.Types.ObjectId(req.body.id)
+    }, {$push: {likes: decode._id}}, function(err, task){
+        if (err) throw err;
+        
+        if(!task){
+            res.send({
+                success: false,
+                msq: 'Error, task not find'
+            })
         }
-        res.json({success: true, msg: 'Successful created new like.'});
+        
+        else{
+            res.send({
+                success: true,
+                msg: 'Good'
+            });
+        }
     });
 }
 

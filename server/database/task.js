@@ -11,6 +11,10 @@ var taskShema = new Schema({
         type: String,
         default: '/assets/image/italian.jpg'
     },
+    likes: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }],
     data: {
         type: Date,
         default: Date.now

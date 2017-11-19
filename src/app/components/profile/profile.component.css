@@ -257,10 +257,12 @@
     color: #008000;
 }
 
+.like.active a,
 .like:hover a {
     text-decoration: underline;
 }
 
+.like.active i,
 .like:hover i {
     color: #ff0000;
 }

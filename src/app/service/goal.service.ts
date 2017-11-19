@@ -20,6 +20,13 @@ export class GoalService {
     }
   }
 
+  addLike(idTask){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/api/task/like', JSON.stringify({id: idTask, id_user: localStorage.getItem('id_token')}), {headers: headers})
+    .map(res => res.json());
+  }
+
   addNewGoal(newGoal){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
