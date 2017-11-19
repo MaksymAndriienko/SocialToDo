@@ -59,11 +59,21 @@ export class ProfileComponent implements OnInit {
               private followingService: FollowingService,
               private goalService: GoalService) { }
 
-  addLike(idTask, i){
-    this.goalService.addLike(idTask).subscribe(
+  addLike(task){
+    console.log(task.likes)
+    this.goalService.addLike(task._id).subscribe(
       data => {
         if(data.success == true){
-          this.likeCheacker[i] = true;
+          if(task.likes.length > 0 && task.likes.length != false && task.likes.length != true){
+            task.likes = false;
+          }
+          else if(task.likes == false){
+            task.likes = true;
+          }
+          else{
+            task.likes = false;
+            console.log(task.likes)
+          }
         }
       },
       error => console.log(error)

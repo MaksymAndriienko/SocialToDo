@@ -25,6 +25,8 @@ import { CommonModule } from '@angular/common';
 import { NgInviewModule } from 'angular-inport';
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { NewsService } from './service/news.service';
+import { FollowingService } from './service/following.service';
 
 const appRoutes: Routes = [
   { path: 'user-list', component: UserListComponent },
@@ -72,6 +74,8 @@ const appRoutes: Routes = [
     UsersService,
     AuthService,
     UploadImageService,
+    FollowingService,
+    NewsService,
     EditprofileService,
     ProfileService
   ],

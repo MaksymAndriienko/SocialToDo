@@ -61,12 +61,60 @@ module.exports.getTasks = function(req, res){
     })
 }
 
-module.exports.setLikes = function(req, res){
+module.exports.like = function(req, res){
     var decode = jwt.decode(req.body.id_user, config.secret);
     console.log(decode._id);
+    Task.find({
+        _id: mongoose.Types.ObjectId(req.body.id),
+        likes: {$in: [decode._id]}
+    }, function(err, task){
+        if (err) throw err;
+        
+        if(!task){
+            res.send({
+                success: false,
+                msq: 'Error, task not find'
+            })
+        }
+        else{
+            if(task == ''){
+                setLikes(req, res);
+            }
+            else{
+                deleteLike(req, res);
+            }
+        }
+    });
+}
+
+function setLikes(req, res){
+    var decode = jwt.decode(req.body.id_user, config.secret);
     Task.findByIdAndUpdate({
         _id: mongoose.Types.ObjectId(req.body.id)
     }, {$push: {likes: decode._id}}, function(err, task){
+        if (err) throw err;
+        
+        if(!task){
+            res.send({
+                success: false,
+                msq: 'Error, task not find'
+            })
+        }
+        
+        else{
+            res.send({
+                success: true,
+                msg: 'Good'
+            });
+        }
+    });
+}
+
+function deleteLike(req, res){
+    var decode = jwt.decode(req.body.id_user, config.secret);
+    Task.update({
+        _id: mongoose.Types.ObjectId(req.body.id)
+    }, {"$pull": {likes: decode._id}}, function(err, task){
         if (err) throw err;
         
         if(!task){

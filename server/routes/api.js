@@ -31,7 +31,7 @@ router.post('/profile/edit/:id', profileController.editUserProfile);
 // router.get('/profile/getcountbyid/:id', profileController.getCountByID);
 router.get('/profile/getcountbyname/:name', profileController.getCountByName);
 router.post('/generate', generatePeople.generate);
-router.post('/task/like', taskController.setLikes);
+router.post('/task/like', taskController.like);
 router.post('/follower/new/', followingController.follower);
 router.post('/follower/cheak', followingController.cheakFollowing);
 router.get('/follower/get/:iduser', followingController.getFollowers);

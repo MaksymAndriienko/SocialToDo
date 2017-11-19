@@ -52,11 +52,11 @@
             </div><!-- /input-group -->
             <div class="line-block" *ngFor="let task of tasks; let i = 'index'">
                 <div class="line-block-text">
-                    <p class="bold size22 center">{{task.title}}{{i}}</p>
+                    <p class="bold size22 center">{{task.title}}</p>
                     <span class="size18">{{task.content}}</span>
                     <div class="line-block-about">
                         <div class="process green"><i class="fa fa-lg fa-check" aria-hidden="true"></i><a>{{task.proces}}</a></div>
-                        <div class="like" (click)='addLike(task._id, i)' [ngClass]="{'active': (task.likes != '' || likeCheacker[i] == true)}"><i class="fa fa-lg fa-heart" aria-hidden="true"></i><a>Like</a></div>
+                        <div class="like" (click)='addLike(tasks[i])' [ngClass]="{'active': (task.likes.length > 0 || (task.likes && task.likes != ''))}"><i class="fa fa-lg fa-heart" aria-hidden="true"></i><a>Like</a></div>
                         <!--<div class="comment"><i class="fa fa-lg fa-comment" aria-hidden="true"></i><a href="#">Comment</a></div>-->
                     </div>
                 </div>
