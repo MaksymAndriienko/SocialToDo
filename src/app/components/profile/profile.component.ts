@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProfileService } from '../../service/profile.service';
+import { GoalService } from '../../service/goal.service';
 import { FollowingService } from '../../service/following.service';
 
 
@@ -41,6 +42,7 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  likeCheacker = [];
   finished = true;
   pages = 1;
   tasks: any = [];
@@ -52,7 +54,22 @@ export class ProfileComponent implements OnInit {
   myUsernameShow: String;
   isFollower: Boolean = false;
 
-  constructor(private profileService: ProfileService, private route: ActivatedRoute, private followingService: FollowingService) { }
+  constructor(private profileService: ProfileService,
+              private route: ActivatedRoute, 
+              private followingService: FollowingService,
+              private goalService: GoalService) { }
+
+  addLike(idTask, i){
+    this.goalService.addLike(idTask).subscribe(
+      data => {
+        if(data.success == true){
+          this.likeCheacker[i] = true;
+        }
+      },
+      error => console.log(error)
+    );
+
+  }
 
   follower(){
     var newFollower = {
@@ -116,7 +133,7 @@ export class ProfileComponent implements OnInit {
       this.finished = true;
       return;
     }
-
+    console.log(this.tasks);
     if(this.usernameShow){
       this.profileService.getTasksProfileAnother(this.usernameShow, this.pages).subscribe(
         data => {

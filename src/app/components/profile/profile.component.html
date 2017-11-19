@@ -50,13 +50,13 @@
                 <!-- только для своего аккаунта -->
                 <input *ngIf="usernameShow" type="text" class="form-control" placeholder="What's your new goal..">
             </div><!-- /input-group -->
-            <div class="line-block" *ngFor='let task of tasks'>
+            <div class="line-block" *ngFor="let task of tasks; let i = 'index'">
                 <div class="line-block-text">
-                    <p class="bold size22 center">{{task.title}}</p>
+                    <p class="bold size22 center">{{task.title}}{{i}}</p>
                     <span class="size18">{{task.content}}</span>
                     <div class="line-block-about">
-                        <div class="process green"><i class="fa fa-lg fa-check" aria-hidden="true"></i><a href="#">{{task.proces}}</a></div>
-                        <div class="like"><i class="fa fa-lg fa-heart" aria-hidden="true"></i><a href="#">Like</a></div>
+                        <div class="process green"><i class="fa fa-lg fa-check" aria-hidden="true"></i><a>{{task.proces}}</a></div>
+                        <div class="like" (click)='addLike(task._id, i)' [ngClass]="{'active': (task.likes != '' || likeCheacker[i] == true)}"><i class="fa fa-lg fa-heart" aria-hidden="true"></i><a>Like</a></div>
                         <!--<div class="comment"><i class="fa fa-lg fa-comment" aria-hidden="true"></i><a href="#">Comment</a></div>-->
                     </div>
                 </div>
@@ -76,8 +76,8 @@
                         "smokejumpers" in the United States, use parachuting as a means of rapidly
                         inserting themselves near forest fires in especially remote or otherwise inaccessible areas.</span>
                     <div class="line-block-about">
-                        <div class="process blue"><i class="fa fa-lg fa-cogs" aria-hidden="true"></i><a href="#">In the process</a></div>
-                        <div class="like"><i class="fa fa-lg fa-heart" aria-hidden="true"></i><a href="#">Like</a></div>
+                        <div class="process blue"><i class="fa fa-lg fa-cogs" aria-hidden="true"></i><a>In the process</a></div>
+                        <div class="like"><i class="fa fa-lg fa-heart" aria-hidden="true"></i><a>Like</a></div>
                     </div>
                 </div>
                 <div class="line-block-image">
