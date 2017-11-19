@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import {ImageCropperComponent, CropperSettings} from 'ng2-img-cropper';
 import { UploadImageService } from '../../service/upload-image.service';
-
+import { EditprofileService } from '../../service/editprofile.service';
 
 @Component({
   selector: 'app-upload-form',
@@ -17,11 +17,27 @@ export class UploadFormComponent {
   cropper:ImageCropperComponent;
 
   constructor(private uploadImageService: UploadImageService) {
+      this.setDefaultImage();
       this.cropperSettings = new CropperSettings();
       this.cropperSettings.noFileInput = true;
+      this.cropperSettings.width = 200;
+      this.cropperSettings.height = 200;
+      this.cropperSettings.croppedWidth = 200;
+      this.cropperSettings.croppedHeight = 200;
+      this.cropperSettings.canvasWidth = 400;
+      this.cropperSettings.canvasHeight = 400;
       this.data = {};
   }
   
+  setDefaultImage(){
+    var image:HTMLImageElement = new Image();
+    image.src ='/assets/image/dress.jpg';
+    image.addEventListener('load', (data) => {
+        this.cropper.setImage(image);
+    });
+    console.log(image);
+  }
+
   ImagesUpload($event){
     var dataImg = {
       data: this.data,

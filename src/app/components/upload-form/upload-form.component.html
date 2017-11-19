@@ -1,11 +1,20 @@
-<div class="file-upload">
-  <span class="text">upload</span>
-  <input id="custom-input" type="file" (change)="fileChangeListener($event)">
-</div>
-<img-cropper #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
-<br>
-<span class="result rounded" *ngIf="data.image" >
-  <img name="imageCreate" [src]="data.image" [(ngModel)]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">
-</span>
-
-<button type="button" (click)="ImagesUpload($event)" class="btn btn-lg btn-default btn-block">Image</button>
+<section class="second">
+  <div class="wrap">
+      <div class="line-blocks full">
+        <img-cropper #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
+        <br>
+        <span class="result rounded" *ngIf="data.image" >
+          <img name="imageCreate" [src]="data.image" [(ngModel)]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">
+        </span>
+        <div class='control-images'>
+            <span id="fileselector">
+                <label class="btn btn-default" for="upload-file-selector">
+                    <input id="upload-file-selector" type="file" (change)="fileChangeListener($event)">
+                    <i class="fa_icon icon-upload-alt margin-correction"></i>upload file
+                </label>
+            </span>
+            <button type="button" (click)="ImagesUpload($event)" class="custom--button btn btn-lg btn-default btn-block">Image</button>
+        </div>
+      </div>
+  </div>
+</section>

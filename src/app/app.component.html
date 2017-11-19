@@ -34,7 +34,7 @@
                 <ul class="nav navbar-nav navbar-right white">
                     
                     <!-- <li><a (click)="userService.logout()" *ngIf="userService.loggedIn()"> Logout</a></li> -->
-                    <li class="img-user"><img src="/assets/image/main-photo1.jpg"></li>
+                    <li class="img-user"><img src="{{user.avatar}}"></li>
                     <li class="logout"><a (click)="userService.logout()"> Log Out</a><i class="fa fa-sign-out" aria-hidden="true"></i></li>
                     
                 </ul>

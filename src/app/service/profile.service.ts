@@ -22,9 +22,10 @@ export class ProfileService {
   }
   
   getCountByName(name){
+    console.log(name);
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/api/profile/' + name)
+    return this.http.get('http://localhost:3000/api/profile/getcountbyname/' + name)
     .map(res => res.json());
   }
 

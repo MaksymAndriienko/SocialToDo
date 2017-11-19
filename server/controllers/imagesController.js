@@ -5,7 +5,7 @@ var uniqueFilename = require('unique-filename');
 var decodeInformation = require('../services/decodeInformation');
 
 function uniqueFileName(){
-    return uniqueFilename('upload', 'image');
+    return uniqueFilename('/assets/upload', 'image');
 }
 
 module.exports.decodeImg = function(req, res){
@@ -24,8 +24,9 @@ module.exports.decodeImg = function(req, res){
         return response;
       }
       var imageBuffer = decodeBase64Image(req.body.data.image);
-      var fileName = uniqueFileName() + '.jpg';
-      fs.writeFile(fileName, imageBuffer.data, function(err) {
+      var fileName =  uniqueFileName() + '.jpg';
+      var fileNameServer = 'src' + fileName;
+      fs.writeFile(fileNameServer, imageBuffer.data, function(err) {
           if(err) {
               console.log(err);
           }

@@ -26,7 +26,22 @@ export class ProfileComponent implements OnInit {
     avatar: String
   };
 
-  finished = false;
+  count = {
+    countFollower: {
+      type: Number,
+      default: 0
+    },
+    countFollowing: {
+      type: Number,
+      default: 0
+    },
+    countGoals:{
+      type: Number,
+      default: 0
+    }
+  }
+
+  finished = true;
   pages = 1;
   tasks: any = [];
   countFollower = 0;
@@ -34,6 +49,7 @@ export class ProfileComponent implements OnInit {
   countGoals = 0;
 
   usernameShow: String;
+  myUsernameShow: String;
   isFollower: Boolean = false;
 
   constructor(private profileService: ProfileService, private route: ActivatedRoute, private followingService: FollowingService) { }
@@ -47,10 +63,13 @@ export class ProfileComponent implements OnInit {
   }
 
   getCount(){
-    if(localStorage.getItem('id_tokem')){
-      this.profileService.getCountById(localStorage.getItem('id_tokem')).subscribe(
+    if(!this.usernameShow){
+      this.profileService.getCountByName(this.myUsernameShow).subscribe(
         data => {
-  
+          this.count.countFollower = data.countFollower;
+          this.count.countFollowing = data.countFollowing;
+          this.count.countGoals = data.countGoals;
+          console.log(data);
         },
         error => console.log(error)
       );
@@ -58,7 +77,10 @@ export class ProfileComponent implements OnInit {
     else{
       this.profileService.getCountByName(this.usernameShow).subscribe(
         data => {
-  
+          this.count.countFollower = data.countFollower;
+          this.count.countFollowing = data.countFollowing;
+          this.count.countGoals = data.countGoals;
+          console.log(data);
         },
         error => console.log(error)
       );
@@ -89,13 +111,17 @@ export class ProfileComponent implements OnInit {
   }
 
   private getTask(){
-    if (this.finished) return;
+    this.finished = false;
+    if (this.tasks.length == this.count.countGoals){
+      this.finished = true;
+      return;
+    }
 
     if(this.usernameShow){
       this.profileService.getTasksProfileAnother(this.usernameShow, this.pages).subscribe(
         data => {
           this.tasks = this.tasks.concat(data);
-          this.finished = false;
+          this.finished = true;
           this.pages += 1;
         },
         error => console.log(error)
@@ -105,23 +131,24 @@ export class ProfileComponent implements OnInit {
       this.profileService.getTasksProfile(this.pages).subscribe(
         data => {
           this.tasks = this.tasks.concat(data);
-          this.finished = false;
+          this.finished = true;
           this.pages += 1;
         },
         error => console.log(error)
       );
     }
-    console.log(this.tasks);
   }
 
   ngOnInit() {
-    
     this.route.params.subscribe(params => {
       this.usernameShow = params['username'];
     });
 
+    this.myUsernameShow = localStorage.getItem('username');
+
     this.checkFollower();
     this.getTask();
+    this.getCount();
 
     if(!this.usernameShow){
       this.profileService.getInformationProfile().subscribe(

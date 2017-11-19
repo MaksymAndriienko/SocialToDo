@@ -110,6 +110,7 @@ module.exports.getCountByName = function(req, res){
                 if(err) throw err;
                 else{
                     count.countGoals = data.length;
+                    console.log(count);
                     res.send(count);
                 }
             })

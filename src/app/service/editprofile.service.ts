@@ -23,4 +23,10 @@ export class EditprofileService {
     .map(res => res.json());
   }
 
+  saveEditImageProfile(editImageProfile){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/api/profile/edit/image/' + editImageProfile._id, JSON.stringify(editImageProfile), {headers: headers}).subscribe();
+  }
+
 }

@@ -32,8 +32,11 @@ export class EditProfileComponent {
   }
 
   updateProfile(user){
-    console.log(user);
     this.editprofileService.saveEditProfile(user);
+  }
+
+  updateImageProfile(ImageUrl){
+    this.editprofileService.saveEditImageProfile(ImageUrl);
   }
 
 }

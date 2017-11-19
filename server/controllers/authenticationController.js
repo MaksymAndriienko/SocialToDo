@@ -59,7 +59,8 @@ module.exports.signin = function(req, res){
                         msg: 'Hello ' + user.username,
                         token: token,
                         _id: user._id,
-                        displayName: user.firstname + user.lastname
+                        displayName: user.firstname + user.lastname,
+                        username: user.username
                     });
                 }
                 else{
