@@ -8,12 +8,10 @@ import {ImageCropperComponent} from 'ng2-img-cropper';
 import { AuthService } from './service/auth.service';
 import { UsersService } from './service/users.service';
 import { GoalService } from './service/goal.service';
-import { NewsService } from './service/news.service';
 import { NewTaskComponent } from './components/new-task/new-task.component';
 import { UploadImageService } from './service/upload-image.service';
 import { ProfileService } from './service/profile.service';
 import { EditprofileService } from './service/editprofile.service';
-import { FollowingService } from './service/following.service';
 import { AppComponent } from './app.component';
 import { SingupComponent } from './components/singup/singup.component';
 import { SinginComponent } from './components/singin/singin.component';
@@ -26,8 +24,10 @@ import { NewsComponent } from './components/news/news.component';
 import { CommonModule } from '@angular/common';
 import { NgInviewModule } from 'angular-inport';
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import { UserListComponent } from './components/user-list/user-list.component';
 
 const appRoutes: Routes = [
+  { path: 'user-list', component: UserListComponent },
   { path: 'singup', component: SingupComponent },
   { path: 'singin', component: SinginComponent },
   { path: 'news', component: NewsComponent },
@@ -51,7 +51,8 @@ const appRoutes: Routes = [
     ProfileComponent,
     NewTaskComponent,
     EditProfileComponent,
-    NewsComponent
+    NewsComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
@@ -69,8 +70,6 @@ const appRoutes: Routes = [
   providers: [
     GoalService,
     UsersService,
-    FollowingService,
-    NewsService,
     AuthService,
     UploadImageService,
     EditprofileService,

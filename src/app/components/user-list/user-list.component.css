@@ -1,0 +1,94 @@
+
+.card .fa{
+    padding: 8px;
+}
+
+.card-container.card {
+    text-align: center;
+    max-width: 600px;
+    padding: 30px 70px;
+    margin-top: 100px;
+}
+
+.btn {
+    font-weight: 700;
+    height: 36px;
+    user-select: none;
+    width: 100px!important;
+}
+
+
+.card {
+    background-color: rgba(32,39,52,.7);
+    /* just in case there no content*/
+    padding: 20px 25px 30px;
+    margin: 0 auto 25px;
+    margin-top: 50px;
+
+}
+
+.header{
+    text-align: center;
+    color: #fff;
+    font-size: 24pt;
+    padding-bottom:30px;
+}
+
+.submit{
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+.line-separator{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height:1px;
+    background:#455996;
+    border-bottom:#455996;
+
+}
+
+.img-user {
+    overflow: hidden;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.img-user img {
+    width: 100%;
+}
+
+.img-name-user {
+    display: flex;
+    align-items: center;    
+}
+
+.img-name-user a {
+    color: #fff;
+}
+
+.img-name-user ul li:first-child {
+    margin-bottom: 7px;
+}
+
+.user-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.submit {
+    padding: 0!important;
+}
+
+.grey {
+    background-color: #444;
+}
+
+@media only screen and (max-width: 768px) {
+    .card-container.card {
+        padding: 30px 30px;
+    }
+}
