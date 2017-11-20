@@ -19,4 +19,12 @@ export class FollowingService {
     return this.http.post('http://localhost:3000/api/follower/cheak', JSON.stringify(Follower), {headers: headers});
   }
 
+
+  getUsers(){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/api/follower/getuser', JSON.stringify({token: localStorage.getItem('id_token')}), {headers: headers})
+      .map(res => res.json());
+  }
+
 }

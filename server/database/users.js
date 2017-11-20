@@ -48,7 +48,11 @@ var userSchema = new Schema({
     avatar: {
       type: String,
       default: ''
-    }
+    },
+    reletions:[{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Following'
+    }]
   });
 
 userSchema.pre('save', function(next){

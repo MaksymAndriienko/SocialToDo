@@ -7,10 +7,6 @@ var Task = require('../database/task');
 var following = require('../database/following');
 var decodeInformation = require('../services/decodeInformation');
 
-function saveRelation(){
-
-}
-
 module.exports.follower = function(req, res){
     var followingDB = new following;
     followingDB.idFollower = decodeInformation.getInformation(req.body.idFollower);
@@ -27,24 +23,47 @@ module.exports.follower = function(req, res){
         }
         else{
             followingDB.idFollowering = user._id;
-            followingDB.save(function(err){
+            followingDB.save(function(err, data){
                 if (err) {
                     return res.json({success: false, msg: 'Error'});
                 }
-                res.json({success: true, msg: 'Successful'});
+                else{
+                    User.update({
+                        $or:[{_id: user._id}, {_id: followingDB.idFollower}]
+                    }, {$push: {reletions: data._id}}, {upsert: true, multi: true}, function(err, data){
+                        if(err){
+                            res.send({
+                                success: false,
+                                msg: err
+                            })
+                        }
+                        else{
+                            res.send({
+                                success: true,
+                                msg: 'Successful'
+                            })
+                        }
+                    })
+                }
             })
         }
     });
-    
 }
 
 module.exports.testGet = function(req, res){
-    following.findOne({
-        _id: req.body.id
-    }).populate('idFollower')
-    .populate('idFollowering').exec(function(err, data){
-        console.log(data);
+    User.find().limit(300).populate({
+        path: 'reletions',
+        match: {idFollower: "59fee47e6f22e00cc89fb728"}
+    }).exec(function(error, data){
+        res.send(data);
     });
+    // following.find().populate({
+    //     path: 'idFollower',
+    //     match: {_id: "59fee47e6f22e00cc89fb728"}
+    // })
+    // .populate('idFollowering').exec(function(err, data){
+    //     res.send(data);
+    // });
 }
 
 module.exports.cheakFollowing = function(req, res){
@@ -102,5 +121,15 @@ module.exports.getFollowers = function(req, res){
                 msg: 'Successful'
             })
         }
+    });
+}
+
+module.exports.getUsers = function(req, res){
+    var user = decodeInformation.getInformation(req.body.token);
+    User.find().limit(10).populate({
+        path: 'reletions',
+        match: {idFollower: user._id}
+    }).exec(function(error, data){
+        res.send(data);
     });
 }
