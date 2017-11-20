@@ -6,18 +6,21 @@
       <!-- <p class="header"> Following </p> -->
       <!-- для подписчиков -->
       <!-- <p class="header"> Followers </p> -->
-      <div class="user-flex" *ngFor="let user of users">
-        <div class="img-name-user">
-          <div class="img-user"><img src="{{user.avatar}}"></div>
-          <ul>
-              <li><a href="/profile/{{user.username}}">{{user.username}}</a></li>
-              <li><a href="/profile/{{user.username}}">{{user.firstname}} {{user.lastname}}</a></li>
-          </ul>
+      <div *ngFor="let user of users">
+        <div class="user-flex">
+          <div class="img-name-user">
+            <div class="img-user"><img src="{{user.avatar}}"></div>
+            <ul>
+                <li><a href="/profile/{{user.username}}">{{user.username}}</a></li>
+                <li><a href="/profile/{{user.username}}">{{user.firstname}} {{user.lastname}}</a></li>
+            </ul>
+          </div>
+          <div class="submit">
+              <input *ngIf="user.reletions.length == 0" type="submit" id="_submit" name="submit" click="" value="Follow" class="btn btn-primary btn-block"/>
+              <input *ngIf="user.reletions.length > 0" type="submit" id="_submit" name="submit" click="" value="Following" class="grey btn btn-primary btn-block"/>
+          </div>
         </div>
-        <div class="submit">
-            <input *ngIf="user.reletions.length == 0" type="submit" id="_submit" name="submit" click="" value="Follow" class="btn btn-primary btn-block"/>
-            <input *ngIf="user.reletions.length > 0" type="submit" id="_submit" name="submit" click="" value="Following" class="grey btn btn-primary btn-block"/>
-        </div>
+        <div class="line-separator"></div>
       </div>  
     </div>
   </div>
