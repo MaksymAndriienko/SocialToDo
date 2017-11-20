@@ -98,3 +98,19 @@
 .notdone i {
     color: #00008b;
 }
+
+@media only screen and (max-width: 768px) {
+    .card-container.card {
+        margin-top: 100px;
+        padding: 30px 30px;
+    }
+}
+
+@media only screen and (max-width: 410px) {
+    .card-container.card {
+        padding: 30px 10px;
+    }
+    .header{
+        font-size: 20pt;
+    }
+}

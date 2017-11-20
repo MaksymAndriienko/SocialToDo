@@ -45,3 +45,18 @@
     background:#455996;
     border-bottom:#455996;
 }
+
+@media only screen and (max-width: 768px) {
+    .card-container.card {
+        margin-top: 100px;
+    }
+}
+
+@media only screen and (max-width: 410px) {
+    .card-container.card {
+        padding: 30px 25px;
+    }
+    .header{
+        font-size: 20pt;
+    }
+}
