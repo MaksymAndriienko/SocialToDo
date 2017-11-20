@@ -36,6 +36,7 @@ router.post('/follower/new/', followingController.follower);
 router.post('/follower/cheak', followingController.cheakFollowing);
 router.get('/follower/get/:iduser', followingController.getFollowers);
 router.post('/follower/getInfore', followingController.testGet);
+router.post('/follower/getuser', followingController.getUsers);
 router.post('/news/getnews', newsController.getNews);
 
 router.get('/memberinfo', passport.authenticate('jwt', { session: false}), function(req, res) {
