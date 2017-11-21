@@ -249,6 +249,15 @@
     text-decoration: underline;
 }
 
+.yellow.active i,
+.yellow:hover i {
+    color: #FFC400;
+}
+
+.brown:hover i {
+    color: #612403;
+}
+
 .blue:hover i {
     color: #00008b;
 }
@@ -286,4 +295,8 @@
 
 .menu a:hover {
     text-decoration: underline;
+}
+
+.grey {
+    background: #444;
 }
