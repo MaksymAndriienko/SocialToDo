@@ -228,12 +228,13 @@
 .line-block-about {
     display: flex;
     justify-content: center;
-    line-height: 60px;
+    margin-top: 30px;
 }
 
 .line-block-about div {
     padding: 10px;
     cursor: pointer;
+    margin-bottom: 20px;
 }
 
 .line-block-about a {
