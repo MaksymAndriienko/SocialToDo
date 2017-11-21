@@ -10,7 +10,8 @@ export class FollowingService {
   addNewFollower(newFollower){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/api/follower/new/', JSON.stringify(newFollower), {headers: headers}).subscribe();
+    return this.http.post('http://localhost:3000/api/follower/new/', JSON.stringify(newFollower), {headers: headers})
+    .map(res => res.json());
   }
 
   cheakFollower(Follower){

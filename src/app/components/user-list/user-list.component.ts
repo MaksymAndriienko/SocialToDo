@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FollowingService } from '../../service/following.service';
+import { Input } from '@angular/core/src/metadata/directives';
 
 @Component({
   selector: 'app-user-list',
@@ -25,4 +26,21 @@ export class UserListComponent implements OnInit {
     );
   }
 
+  follower(user){
+    if(user.reletions.length == 0){
+      var newFollower = {
+        userFollowing: user.username,
+        idFollower: localStorage.getItem('id_token')
+      }
+      this.followingService.addNewFollower(newFollower).subscribe(
+        data => {
+          user.reletions = data.user.reletions;
+        }
+      );
+    }
+    else{
+      user.reletions.length = 0;
+    }
+    console.log(user.reletions.length);
+  }
 }

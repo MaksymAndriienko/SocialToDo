@@ -11,7 +11,7 @@ module.exports.getNews = function(req, res){
     console.log('Hello');
     idUser = decodeInformation.getInformation(req.body.id);
     following.find({
-        idFollowering: idUser
+        idFollower: idUser
     }, function(err, reletions){
         if(err) throw err;
         
@@ -24,7 +24,7 @@ module.exports.getNews = function(req, res){
         else{
             var requestUsers = [];
             for(var i = 0; i < reletions.length; i++){
-                requestUsers.push({userId: reletions[i].idFollower});
+                requestUsers.push({userId: reletions[i].idFollowering});
             }
             Task.find({
                 $or: requestUsers

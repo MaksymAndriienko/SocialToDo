@@ -11,6 +11,7 @@ import { FollowingService } from '../../service/following.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+
   user = {
     _id: String,
     username: String,
@@ -86,7 +87,7 @@ export class ProfileComponent implements OnInit {
       userFollowing: this.usernameShow,
       idFollower: localStorage.getItem('id_token')
     }
-    this.followingService.addNewFollower(newFollower);
+    this.followingService.addNewFollower(newFollower).subscribe();
   }
 
   getCount(){

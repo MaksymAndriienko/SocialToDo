@@ -12,7 +12,12 @@ module.exports.follower = function(req, res){
     followingDB.idFollower = decodeInformation.getInformation(req.body.idFollower);
     User.findOne({
         username: req.body.userFollowing
-    }, function(err, user){
+    }) 
+    .populate({
+        path: 'reletions',
+        match: {idFollower: followingDB.idFollower}
+    })
+    .exec(function(err, user){
         if(err) throw err;
 
         if(!user){
@@ -38,15 +43,66 @@ module.exports.follower = function(req, res){
                             })
                         }
                         else{
-                            res.send({
-                                success: true,
-                                msg: 'Successful'
-                            })
+                            User.findOne({
+                                username: req.body.userFollowing
+                            }).populate({
+                                path: 'reletions',
+                                match: {idFollower: followingDB.idFollower}
+                            }).exec(function(err, user){
+                                res.send({
+                                    user: user,
+                                    success: true,
+                                    msg: 'Successful'
+                                }) 
+                            });
                         }
                     })
                 }
             })
         }
+    });
+}
+
+module.exports.unfollowing = function(req, res){
+    var followingDB = new following;
+    idFollower = decodeInformation.getInformation(req.body.idFollower);
+    User.findOne({
+        _id: idFollower
+    })
+    .populate({
+        path: 'reletions',
+        match: {idFollowering: req.body._id},
+        populate: {
+            path: 'idFollowering',
+            model: 'User'
+          }
+    })
+    .exec(function(error, data){
+        following.remove({
+            _id: mongoose.Types.ObjectId(data.reletions[0]._id)
+        }).exec(function(error, dataR){
+            if(error)
+                throw error;
+            else{
+                User.update({
+                    $or:[{_id: idFollower}, {_id: req.body._id}]
+                },
+                {$pull: {reletions: data.reletions[0]._id}}, {upsert: true, multi: true}, function(err, data){
+                    if(err){
+                        res.send({
+                            success: false,
+                            msg: err
+                        })
+                    }
+                    else{
+                        res.send({
+                            success: true,
+                            msg: 'Successful'
+                        }) 
+                    }
+                });
+            }
+        });
     });
 }
 
@@ -70,7 +126,12 @@ module.exports.cheakFollowing = function(req, res){
     var idFollower = decodeInformation.getInformation(req.body.idFollower);
     User.findOne({
         username: req.body.userFollowing
-    }, function(err, user){
+    })
+    .populate({
+        path: 'reletions',
+        match: {idFollower: idFollower}
+    }) 
+    .exec(function(err, user){
         if(err) throw err;
 
         if(!user){
@@ -80,24 +141,18 @@ module.exports.cheakFollowing = function(req, res){
             })
         }
         else{
-            following.findOne({
-                idFollower: idFollower,
-                idFollowering: user._id
-            }, function(err, data){
-                if(err) throw err;
-                else if(!data){
-                    res.json({
-                        success: false,
-                        msg: 'Error'
-                    })
-                }
-                else{
-                    res.json({
-                        success: true,
-                        msg: 'Successful'
-                    })
-                }
-            })
+            if(user.reletions.length == 1){
+                res.json({
+                    success: true,
+                    msg: 'Successful'
+                })
+            }
+            else{
+                res.json({
+                    success: false,
+                    msg: 'Error'
+                })
+            }
         }
     });
 }
@@ -115,7 +170,6 @@ module.exports.getFollowers = function(req, res){
             })
         }
         else{
-            console.log(data);
             res.send({
                 success: true,
                 msg: 'Successful'
