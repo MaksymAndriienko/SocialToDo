@@ -42,8 +42,8 @@
     <div class="wrap">
         <div class="left-panel">
             <ul class="menu">
-                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i>Favourites</a></li>
-                <li><a href="#"><i class="fa fa-check" aria-hidden="true"></i>Achieved Goals</a></li>
+                <li class="favourite" (click)='ffilter=!ffilter' [ngClass]="ffilter ? 'favourite-choise' : ''"><i class="fa fa-star" aria-hidden="true"></i>Favourites</li>
+                <li class="done" (click)='dfilter=!dfilter' [ngClass]="dfilter ? 'done-choise' : ''"><i class="fa fa-check" aria-hidden="true"></i>Achieved Goals</li>
             </ul>
         </div>
         <div class="line-blocks">

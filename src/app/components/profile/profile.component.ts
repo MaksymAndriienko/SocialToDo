@@ -49,6 +49,8 @@ export class ProfileComponent implements OnInit {
   countFollower = 0;
   countFollowing = 0;
   countGoals = 0;
+  ffilter = false;
+  dfilter = false;
 
   usernameShow: String;
   myUsernameShow: String;
@@ -190,5 +192,15 @@ export class ProfileComponent implements OnInit {
       );
     }
   }
+
+  // filter(divToShow){
+  //   this.progressBool = divToShow;
+  //   if(divToShow == true){
+  //     this.proces = "Done";
+  //   }
+  //   else{
+  //     this.proces = "In the process";
+  //   }
+  // }
 
 }
