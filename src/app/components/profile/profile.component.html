@@ -22,6 +22,7 @@
                 <input *ngIf="!usernameShow" type="submit" name="submit" routerLink="/edit-profile" value="Edit Profile" class="btn-lg btn-primary btn-block btn-signin"/>
                 <!-- для аккаунта другого пользователья -->
                 <input *ngIf="!isFollower && usernameShow" type="submit" name="submit" (click)="follower()" value="Follow" class="btn-lg btn-primary btn-block btn-signin"/>
+                <input *ngIf="isFollower && usernameShow" type="submit" name="submit" (click)="unfollow()" value="Following" class="btn-lg btn-primary btn-block btn-signin grey"/>
         </div>
         <div class="line">
             <div class="line-first">
@@ -41,8 +42,8 @@
     <div class="wrap">
         <div class="left-panel">
             <ul class="menu">
-                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i>Favourites</a></li>
-                <li><a href="#"><i class="fa fa-check" aria-hidden="true"></i>Achieved Goals</a></li>
+                <li class="favourite" (click)='ffilter=!ffilter' [ngClass]="ffilter ? 'favourite-choise' : ''"><i class="fa fa-star" aria-hidden="true"></i>Favourites</li>
+                <li class="done" (click)='dfilter=!dfilter' [ngClass]="dfilter ? 'done-choise' : ''"><i class="fa fa-check" aria-hidden="true"></i>Achieved Goals</li>
             </ul>
         </div>
         <div class="line-blocks">
@@ -55,9 +56,11 @@
                     <p class="bold size22 center">{{task.title}}</p>
                     <span class="size18">{{task.content}}</span>
                     <div class="line-block-about">
-                        <div class="process green"><i class="fa fa-lg fa-check" aria-hidden="true"></i><a>{{task.proces}}</a></div>
+                        <div class="favourite yellow"><i class="fa fa-lg fa-star" aria-hidden="true"></i><a>Favourite</a></div>
+                        <div class="process" [ngClass]="task.proces == 'Done' ? 'green' : 'blue'"><i class="fa fa-lg" [ngClass]="task.proces == 'Done' ? 'fa-check' : 'fa-cogs'" aria-hidden="true"></i><a>{{task.proces}}</a></div>
                         <div class="like" (click)='addLike(tasks[i])' [ngClass]="{'active': (task.likes.length > 0 || (task.likes && task.likes != ''))}"><i class="fa fa-lg fa-heart" aria-hidden="true"></i><a>Like</a></div>
                         <!--<div class="comment"><i class="fa fa-lg fa-comment" aria-hidden="true"></i><a href="#">Comment</a></div>-->
+                        <div class="edit brown"><i class="fa fa-lg fa-edit" aria-hidden="true"></i><a>Edit</a></div>
                     </div>
                 </div>
                 <div class="line-block-image">
@@ -76,8 +79,10 @@
                         "smokejumpers" in the United States, use parachuting as a means of rapidly
                         inserting themselves near forest fires in especially remote or otherwise inaccessible areas.</span>
                     <div class="line-block-about">
+                        <div class="favourite yellow"><i class="fa fa-lg fa-star" aria-hidden="true"></i><a>Favourite</a></div>
                         <div class="process blue"><i class="fa fa-lg fa-cogs" aria-hidden="true"></i><a>In the process</a></div>
                         <div class="like"><i class="fa fa-lg fa-heart" aria-hidden="true"></i><a>Like</a></div>
+                        <div class="edit brown"><i class="fa fa-lg fa-edit" aria-hidden="true"></i><a>Edit</a></div>
                     </div>
                 </div>
                 <div class="line-block-image">

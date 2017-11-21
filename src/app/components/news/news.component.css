@@ -163,6 +163,7 @@
 .line-block-about div {
     padding: 10px;
     cursor: pointer;
+    margin-top: 30px;
 }
 
 .line-block-about a {
@@ -178,6 +179,15 @@
     text-decoration: underline;
 }
 
+.yellow.active i,
+.yellow:hover i {
+    color: #FFC400;
+}
+
+.brown:hover i {
+    color: #612403;
+}
+
 .blue:hover i {
     color: #00008b;
 }
@@ -190,6 +200,7 @@
     text-decoration: underline;
 }
 
+.like.active i,
 .like:hover i {
     color: #ff0000;
 }

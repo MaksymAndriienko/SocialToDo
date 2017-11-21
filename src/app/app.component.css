@@ -1,6 +1,7 @@
 .logout {
     display: flex;
     justify-content: center;
+    cursor: pointer;
 }
 
 .logout i {
