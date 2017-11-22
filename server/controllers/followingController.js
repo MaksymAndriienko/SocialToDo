@@ -95,10 +95,18 @@ module.exports.unfollowing = function(req, res){
                         })
                     }
                     else{
-                        res.send({
-                            success: true,
-                            msg: 'Successful'
-                        }) 
+                        User.findOne({
+                            _id: req.body._id
+                        }).populate({
+                            path: 'reletions',
+                            match: {idFollower: idFollower}
+                        }).exec(function(error, user){
+                            res.send({
+                                user: user,
+                                success: true,
+                                msg: 'Successful'
+                            }) 
+                        });
                     }
                 });
             }

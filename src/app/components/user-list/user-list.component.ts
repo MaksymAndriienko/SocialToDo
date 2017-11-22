@@ -39,8 +39,15 @@ export class UserListComponent implements OnInit {
       );
     }
     else{
-      user.reletions.length = 0;
+      var Following = {
+        _id: user._id,
+        idFollower: localStorage.getItem('id_token')
+      }
+      this.followingService.deleteFollowing(Following).subscribe(
+        data => {
+          user.reletions = data.user.reletions;
+        }
+      )
     }
-    console.log(user.reletions.length);
   }
 }

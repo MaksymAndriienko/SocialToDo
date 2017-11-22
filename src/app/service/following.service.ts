@@ -20,6 +20,12 @@ export class FollowingService {
     return this.http.post('http://localhost:3000/api/follower/cheak', JSON.stringify(Follower), {headers: headers});
   }
 
+  deleteFollowing(Following){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/api/follower/delete', JSON.stringify(Following), {headers: headers})
+    .map(res => res.json());
+  }
 
   getUsers(){
     let headers = new Headers();
