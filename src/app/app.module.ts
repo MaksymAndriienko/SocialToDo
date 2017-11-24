@@ -27,8 +27,10 @@ import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { NewsService } from './service/news.service';
 import { FollowingService } from './service/following.service';
+import { EditGoalComponent } from './components/edit-goal/edit-goal.component';
 
 const appRoutes: Routes = [
+  { path: 'edit-goal', component: EditGoalComponent },
   { path: 'user-list', component: UserListComponent },
   { path: 'singup', component: SingupComponent },
   { path: 'singin', component: SinginComponent },
@@ -54,7 +56,8 @@ const appRoutes: Routes = [
     NewTaskComponent,
     EditProfileComponent,
     NewsComponent,
-    UserListComponent
+    UserListComponent,
+    EditGoalComponent
   ],
   imports: [
     BrowserModule,

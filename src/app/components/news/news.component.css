@@ -47,7 +47,6 @@
 .second {
     padding: 50px 0;
     width: 100%;
-    background: url("/assets/image/dream.jpg");
     background-size: cover;
     background-attachment: fixed;
 }

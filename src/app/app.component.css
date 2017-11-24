@@ -27,13 +27,22 @@
     margin-left: 10px;
 }
 
+.find-btn:focus {    
+    outline: 0;
+    box-shadow: none;
+    background: #fff;
+}
+
+.form-control:focus {
+    border: solid 1px #0f0f0f;
+    outline: 0;
+    box-shadow: none;
+    background: #fff;
+}
+
 @media only screen and (max-width: 992px) {
     .navbar-nav li {
         font-size: 16px;
-    }
-
-    .nav>li>a {
-        padding: 10px 10px;
     }
 
     .navbar-brand {
@@ -44,8 +53,22 @@
     .img-user {
         margin-right: 0;
     }
+   
+}
 
+@media only screen and (max-width: 992px) {
     .navbar-form {
-        padding: 10px 10px;
+        padding-left: 0;
+        padding-right: 5px;
+    }
+
+    .form-control {
+        width: 133px;
+    }
+}
+
+@media only screen and (max-height: 650px) {
+    .wrapper {
+        padding-top: 80px;
     }
 }

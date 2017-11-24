@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="card card-container">
+      <p class="header"> Edit goal </p>
+      <form class="form-new-task" role="form" (submit)="createGoal($event)">
+        <fieldset>
+          <div class="form-group">
+            <input  type="text" id="title" name="title" [(ngModel)]="title" required="required" class="form-control" placeholder="Title" autofocus/>
+          </div>
+          <div class="form-group">
+            <textarea id="describe" name="describe" [(ngModel)]="describe" class="form-control" required="required" rows="7" placeholder="Describe your new goal"></textarea>
+          </div>
+          <div class="photo-goal">
+
+          </div>
+          <div class="line-block-about">
+              <div class="process green" (click)='progress(true)' [ngClass]="progressBool ? 'done' : ''"><i class="fa fa-lg fa-check" aria-hidden="true"></i><span>Done</span></div>
+              <div class="process blue" (click)='progress(false)' [ngClass]="progressBool ? '' : 'notdone'"><i class="fa fa-lg fa-cogs" aria-hidden="true"></i><span>In the process</span></div>
+          </div>
+          <div class="line-separator"></div>
+          <div class="submit">
+            <input type="submit" id="_submit" name="submit" click="createGoal($event)" value="Save" class="btn-lg btn-primary btn-block btn-signin"/>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
