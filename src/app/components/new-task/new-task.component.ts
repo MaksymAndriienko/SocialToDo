@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GoalService } from '../../service/goal.service';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-new-task',
@@ -13,7 +14,13 @@ export class NewTaskComponent implements OnInit {
   proces: String;
   token: String;
 
-  constructor(private goalService: GoalService) { }
+  constructor(private goalService: GoalService,
+              private route: ActivatedRoute
+            ) { 
+              this.route.queryParams.subscribe(params => {
+                console.log(params);
+            });
+            }
 
   createGoal(event){
     event.preventDefault();

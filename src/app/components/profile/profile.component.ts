@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProfileService } from '../../service/profile.service';
 import { GoalService } from '../../service/goal.service';
 import { FollowingService } from '../../service/following.service';
+import {Router, NavigationExtras} from "@angular/router";
 
 
 @Component({
@@ -60,23 +61,15 @@ export class ProfileComponent implements OnInit {
   constructor(private profileService: ProfileService,
               private route: ActivatedRoute, 
               private followingService: FollowingService,
-              private goalService: GoalService) { }
+              private goalService: GoalService,
+              private router: Router) { }
 
   addLike(task){
     console.log(task.likes)
     this.goalService.addLike(task._id).subscribe(
       data => {
         if(data.success == true){
-          if(task.likes.length > 0 && task.likes.length != false && task.likes.length != true){
-            task.likes = false;
-          }
-          else if(task.likes == false){
-            task.likes = true;
-          }
-          else{
-            task.likes = false;
-            console.log(task.likes)
-          }
+          task.isLike = data.taskLike;
         }
       },
       error => console.log(error)
@@ -90,6 +83,15 @@ export class ProfileComponent implements OnInit {
       idFollower: localStorage.getItem('id_token')
     }
     this.followingService.addNewFollower(newFollower).subscribe();
+  }
+
+  editGoal(task){
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+          task: task
+      }
+  };
+    this.router.navigate(['edit-goal', navigationExtras]);
   }
 
   getCount(){
@@ -146,9 +148,8 @@ export class ProfileComponent implements OnInit {
       this.finished = true;
       return;
     }
-    console.log(this.tasks);
     if(this.usernameShow){
-      this.profileService.getTasksProfileAnother(this.usernameShow, this.pages).subscribe(
+      this.profileService.getTasksProfileAnother(this.usernameShow, this.pages, localStorage.getItem('id_token')).subscribe(
         data => {
           this.tasks = this.tasks.concat(data);
           this.finished = true;

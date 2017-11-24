@@ -38,10 +38,11 @@ module.exports.getTasks = function(req, res){
     var skipItem = (req.params.page * itemToShow) - itemToShow;
     Task.find({
         userId: decode._id
-    }).populate({
-        path: 'likes',
-        match: {_id: decode._id},
-        select: 'username'
+    })
+    .lean()
+    .populate({
+        path: "likes",
+        select: '_id'
     })
         .skip(skipItem)
         .limit(5)
@@ -56,6 +57,23 @@ module.exports.getTasks = function(req, res){
             })
         }
         else{
+            data.forEach(function(task, index){
+                if(task.likes.length == 0){
+                    task.isLike = false;
+                }
+                else{
+                    task.likes.every(function(like, index){
+                        if(like._id == decode._id){
+                            task.isLike = true;
+                            return false;
+                        }
+                        else{
+                            task.isLike = false;
+                            return true;
+                        }
+                    });   
+                }
+            })
             res.send(data);
         }
     })
@@ -63,7 +81,6 @@ module.exports.getTasks = function(req, res){
 
 module.exports.like = function(req, res){
     var decode = jwt.decode(req.body.id_user, config.secret);
-    console.log(decode._id);
     Task.find({
         _id: mongoose.Types.ObjectId(req.body.id),
         likes: {$in: [decode._id]}
@@ -91,7 +108,9 @@ function setLikes(req, res){
     var decode = jwt.decode(req.body.id_user, config.secret);
     Task.findByIdAndUpdate({
         _id: mongoose.Types.ObjectId(req.body.id)
-    }, {$push: {likes: decode._id}}, function(err, task){
+    }, {$push: {likes: decode._id}}, {new: true}) 
+    .lean()
+    .exec(function(err, task){
         if (err) throw err;
         
         if(!task){
@@ -102,7 +121,9 @@ function setLikes(req, res){
         }
         
         else{
+            task.isLike = true;
             res.send({
+                taskLike: task.isLike,
                 success: true,
                 msg: 'Good'
             });
@@ -114,7 +135,9 @@ function deleteLike(req, res){
     var decode = jwt.decode(req.body.id_user, config.secret);
     Task.update({
         _id: mongoose.Types.ObjectId(req.body.id)
-    }, {"$pull": {likes: decode._id}}, function(err, task){
+    }, {"$pull": {likes: decode._id}}, {new: true}) 
+    .lean()
+    .exec(function(err, task){
         if (err) throw err;
         
         if(!task){
@@ -125,7 +148,9 @@ function deleteLike(req, res){
         }
         
         else{
+            task.isLike = false;
             res.send({
+                taskLike: task.isLike,
                 success: true,
                 msg: 'Good'
             });
@@ -136,9 +161,16 @@ function deleteLike(req, res){
 module.exports.getTasksAnother = function(req, res){
     var itemToShow = 5;
     var skipItem = (req.params.page * itemToShow) - itemToShow;
+    var decode = jwt.decode(req.params.token, config.secret);
     Task.find({
         user: req.params.username
-    }, null, { skip: skipItem, limit: 5 }, function(error, data){
+    }, null, { skip: skipItem, limit: 5 }) 
+    .lean()
+    .populate({
+        path: "likes",
+        select: '_id'
+    })
+    .exec(function(error, data){
         if(error){
             throw error;
         }
@@ -149,6 +181,23 @@ module.exports.getTasksAnother = function(req, res){
             })
         }
         else{
+            data.forEach(function(task, index){
+                if(task.likes.length == 0){
+                    task.isLike = false;
+                }
+                else{
+                    task.likes.every(function(like, index){
+                        if(like._id == decode._id){
+                            task.isLike = true;
+                            return false;
+                        }
+                        else{
+                            task.isLike = false;
+                            return true;
+                        }
+                    });
+                }
+            })
             res.send(data);
         }
     })
