@@ -37,6 +37,7 @@ const appRoutes: Routes = [
   { path: 'news', component: NewsComponent },
   { path: 'new-task', component: NewTaskComponent },
   { path: 'new-goal', component: NewTaskComponent },
+  { path: 'edit-goal', component: NewTaskComponent },
   { path: 'edit-profile', component: EditProfileComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'profile/:username', component: ProfileComponent },

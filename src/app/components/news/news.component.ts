@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { NewsService } from '../../service/news.service';
+import { GoalService } from '../../service/goal.service';
 
 @Component({
   selector: 'app-news',
@@ -10,13 +11,26 @@ export class NewsComponent implements OnInit {
 
   tasks: any = [];
 
-  constructor(private newsService: NewsService) { }
+  constructor(private newsService: NewsService, private goalService: GoalService) { }
 
   @HostListener("window:scroll", [])
   onScroll(): void {
   if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
           console.log('End');
       }
+  }
+
+  addLike(task){
+    console.log(task.likes)
+    this.goalService.addLike(task._id).subscribe(
+      data => {
+        if(data.success == true){
+          task.isLike = data.taskLike;
+        }
+      },
+      error => console.log(error)
+    );
+
   }
 
   ngOnInit() {
@@ -27,7 +41,9 @@ export class NewsComponent implements OnInit {
     .map(res => res.json())
     .subscribe(
       data => {
-        this.tasks = data;
+        if(data.success == true){
+          this.tasks = data.tasks;
+        }
       },
       error => console.log(error)
     );
