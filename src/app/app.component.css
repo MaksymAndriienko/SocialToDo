@@ -53,10 +53,7 @@
     .img-user {
         margin-right: 0;
     }
-   
-}
 
-@media only screen and (max-width: 992px) {
     .navbar-form {
         padding-left: 0;
         padding-right: 5px;
@@ -65,10 +62,15 @@
     .form-control {
         width: 133px;
     }
+   
 }
 
-@media only screen and (max-height: 650px) {
-    .wrapper {
-        padding-top: 80px;
+@media only screen and (max-width: 767px) {
+    .img-user {
+        display: none;
+    }
+
+    .find-friend-form {
+        display: none;
     }
 }

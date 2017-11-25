@@ -57,6 +57,10 @@
     height: 200px;
 }
 
+.photo img {
+    width: 100%;
+}
+
 .name-about{
     width: 450px;
     text-align: left;
@@ -127,7 +131,6 @@
 }
 
 .second>.wrap {
-
     margin-top: 30px;
     background: rgba(32,39,52,.7);
     padding: 50px 20px;
@@ -320,4 +323,223 @@
 
 .grey {
     background: #444;
+}
+
+
+@media only screen and (max-height: 650px) {
+    .wrapper {
+        padding-top: 80px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .wrapper {
+        max-width: 500px;
+    }
+    .name{
+        font-size: 34px;
+        margin-bottom: 10px;
+    }
+
+    .name-about {
+        width: 250px;
+    }
+
+    .about {
+        margin-bottom: 10px;
+    }
+
+    .line {
+        padding: 20px 0;
+        margin-top: 20px;
+    }
+
+    .line a .size40 {
+        font-size: 30px;
+        line-height: 35px;
+    }
+
+    .line.size18 {
+        font-size: 15px;
+        line-height: 15px;
+    }
+
+    .line-second:before {
+        height: 50px;
+        left: 150px;
+    }
+
+    .line-third:before {
+        height: 50px;
+        right: 175px;
+    }
+
+    .line-block .size22 {
+        font-size: 20px;
+        line-height: 20px;
+    }
+
+    .line-block-text {
+        width: calc(100% - 230px);
+    }
+    
+    .line-block-image{
+        width: 200px;
+        height: 200px;
+    }
+
+    .line-block .size18 {
+        font-size: 16px;
+        line-height: 18px;
+    }
+
+    .line-block-about {
+        margin-top: 10px;
+        flex-wrap: wrap;
+    }
+
+    .line-block-about div {
+        margin-bottom: 0;
+    }
+
+    .edit {
+        margin-bottom: 0;
+    }
+
+    .second>.wrap {
+        flex-wrap: wrap;
+    }
+    .left-panel {
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .line-blocks {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .name-about {
+        width: 270px;
+    }
+
+    .second>.wrap {
+        padding: 20px;
+    }
+
+    .line-block {
+        padding: 10px;
+        flex-wrap: wrap;
+    }
+
+    .line-block-image {
+        order: 1;
+        width: 150px;
+        height: 150px;
+        margin: 0 auto;
+    }
+
+    .line-block-text {
+        width: 100%;
+        order: 2;
+    }
+}
+
+@media only screen and (max-width: 510px) {
+    .photo {
+        width: 100px;
+        height: 100px;
+    }
+
+    .wrapper {
+        max-width: 300px;
+    }
+
+    .photo-name {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .name-about {
+        margin-top: 10px;
+        width: 201px;
+    }
+
+    .name {
+        font-size: 26px;
+    }
+
+    .left-panel {
+        font-size: 15px;
+        line-height: 17px;
+    }
+
+    .name-about .size18 {
+        font-size: 15px;
+        line-height: 17px;
+    }
+
+    .wrapper .submit input {
+        margin-top: 10px;
+    }
+
+    .wrapper .btn-lg {
+        font-size: 16px;
+        padding: 7px 5px;
+    }
+
+    .line {
+        padding: 10px 0;
+        margin-top: 10px;
+    }
+
+    .line a .size40 {
+        font-size: 25px;
+        line-height: 30px;
+    }
+
+    .line-second:before {
+        height: 45px;
+        left: 83px;
+    }
+
+    .line-third:before {
+        height: 45px;
+        right: 109px;
+    }
+
+    .line-block-image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .line-block .size22 {
+        font-size: 16px;
+        line-height: 16px;
+    }
+
+    .line-block-text p {
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+
+    .size18 {
+        font-size: 14px;
+        line-height: 15px;
+    }
+
+    .line-block-about .fa-lg {
+        font-size: 1em;
+        line-height: 1em;
+        vertical-align: 0%;
+    }
+
+    .line-block-about div {
+        padding: 5px 10px;
+    }
+
+    .line-block-about {
+        font-size: 15px;
+    }
 }
