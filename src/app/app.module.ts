@@ -30,17 +30,16 @@ import { FollowingService } from './service/following.service';
 import { EditGoalComponent } from './components/edit-goal/edit-goal.component';
 
 const appRoutes: Routes = [
-  { path: 'edit-goal', component: EditGoalComponent },
   { path: 'user-list', component: UserListComponent },
   { path: 'singup', component: SingupComponent },
   { path: 'singin', component: SinginComponent },
   { path: 'news', component: NewsComponent },
   { path: 'new-task', component: NewTaskComponent },
   { path: 'new-goal', component: NewTaskComponent },
-  { path: 'edit-goal', component: NewTaskComponent },
   { path: 'edit-profile', component: EditProfileComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'profile/:username', component: ProfileComponent },
+  { path: 'edit-goal', component: EditGoalComponent },
   { path: 'hidden', component: HiddenpageComponent, canActivate: [AuthService] },
   { path: 'upload-images', component: UploadFormComponent, canActivate: [AuthService] }
 ];

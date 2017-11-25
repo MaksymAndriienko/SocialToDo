@@ -27,6 +27,19 @@ export class GoalService {
     .map(res => res.json());
   }
 
+  updateGoal(updateDate){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/api/task/update', JSON.stringify(updateDate), {headers: headers})
+    .map(res => res.json())
+    .subscribe(
+      data => {
+        this.controleError(data);
+      },
+      error => console.log(error)
+    );
+  }
+
   addNewGoal(newGoal){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');

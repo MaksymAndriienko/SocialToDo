@@ -202,3 +202,26 @@ module.exports.getTasksAnother = function(req, res){
         }
     })
 }
+
+module.exports.UpdateTask = function(req, res){
+    Task.findByIdAndUpdate({
+        _id: mongoose.Types.ObjectId(req.body._id)
+    }, {$set: req.body}, function(err, task){
+        if (err) throw err;
+
+        if(!task){
+            res.send({
+                success: false,
+                msq: 'Error, task not find'
+            })
+        }
+
+        else{
+            res.send({
+                success: true,
+                msg: 'Good'
+            });
+        }
+        
+    });
+}

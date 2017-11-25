@@ -65,7 +65,6 @@ export class ProfileComponent implements OnInit {
               private router: Router) { }
 
   addLike(task){
-    console.log(task.likes)
     this.goalService.addLike(task._id).subscribe(
       data => {
         if(data.success == true){
@@ -86,12 +85,11 @@ export class ProfileComponent implements OnInit {
   }
 
   editGoal(task){
-    let navigationExtras: NavigationExtras = {
-      queryParams: {
-          task: task
-      }
-  };
-    this.router.navigate(['edit-goal', navigationExtras]);
+    let navextras: NavigationExtras={            
+      queryParams:{"task":JSON.stringify(task)},
+      skipLocationChange: true
+    };
+    this.router.navigate(['/edit-goal'], navextras);
   }
 
   getCount(){
