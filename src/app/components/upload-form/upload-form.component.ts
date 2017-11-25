@@ -38,12 +38,11 @@ export class UploadFormComponent {
     console.log(image);
   }
 
-  ImagesUpload($event){
+  ImagesUpload(){
     var dataImg = {
       data: this.data,
       token: localStorage.getItem('id_token')
     };
-    console.log(dataImg);
     this.uploadImageService.uploadImage(dataImg);
   }
 
