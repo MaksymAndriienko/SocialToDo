@@ -25,7 +25,7 @@ module.exports.decodeImg = function(req, res){
       }
       var imageBuffer = decodeBase64Image(req.body.data.image);
       var fileName =  uniqueFileName() + '.jpg';
-      var fileNameServer = 'src' + fileName;
+      var fileNameServer = 'dist' + fileName;
       fs.writeFile(fileNameServer, imageBuffer.data, function(err) {
           if(err) {
               console.log(err);
