@@ -18,6 +18,10 @@
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
+      "scripts": [
+        "bower_components/jquery/dist/jquery.min.js",
+        "bower_components/bootstrap/dist/js/bootstrap.min.js"
+      ],
       "styles": [
         "../node_modules/ng2-toastr/bundles/ng2-toastr.min.css",
         "bower_components/bootstrap/dist/css/bootstrap.min.css",
