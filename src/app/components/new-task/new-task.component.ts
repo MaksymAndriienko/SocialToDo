@@ -35,6 +35,7 @@ export class NewTaskComponent implements OnInit {
 
 
   ngOnInit() {
+    this.proces = "In the process";
   }
 
   progress(divToShow){
