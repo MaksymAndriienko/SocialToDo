@@ -19,7 +19,7 @@
                     <span class="size18">{{task.content}}</span>
                     <div class="line-block-about">
                             <div class="favourite yellow"><i class="fa fa-lg fa-star" aria-hidden="true"></i><a>Favourite</a></div>
-                            <div class="process" [ngClass]="task.proces == 'Done' ? 'green' : 'blue'"><i class="fa fa-lg" [ngClass]="task.proces == 'Done' ? 'fa-check' : 'fa-cogs'" aria-hidden="true"></i><a>{{task.proces}}</a></div>
+                            <div class="process" [ngClass]='task.proces == "Done" ? "green" : "blue"'><i class="fa fa-lg" [ngClass]="task.proces == 'Done' ? 'fa-check' : 'fa-cogs'" aria-hidden="true"></i><a>{{task.proces}}</a></div>
                             <div class="like" (click)='addLike(tasks[i])' [ngClass]="{'active': task.isLike}"><i class="fa fa-lg fa-heart" aria-hidden="true"></i><a>Like</a></div>
                     </div>
                 </div>
