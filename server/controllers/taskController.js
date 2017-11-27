@@ -40,6 +40,7 @@ module.exports.getTasks = function(req, res){
         userId: decode._id
     })
     .lean()
+    .sort({date: 'desc'})
     .populate({
         path: "likes",
         select: '_id'
@@ -166,6 +167,7 @@ module.exports.getTasksAnother = function(req, res){
         user: req.params.username
     }, null, { skip: skipItem, limit: 5 }) 
     .lean()
+    .sort({date: 'desc'})
     .populate({
         path: "likes",
         select: '_id'
