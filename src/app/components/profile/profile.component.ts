@@ -193,14 +193,4 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  // filter(divToShow){
-  //   this.progressBool = divToShow;
-  //   if(divToShow == true){
-  //     this.proces = "Done";
-  //   }
-  //   else{
-  //     this.proces = "In the process";
-  //   }
-  // }
-
 }
