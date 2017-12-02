@@ -11,6 +11,9 @@ export class NewsComponent implements OnInit {
 
   tasks: any = [];
 
+  ffilter = false;
+  dfilter = false;
+
   constructor(private newsService: NewsService, private goalService: GoalService) { }
 
   @HostListener("window:scroll", [])

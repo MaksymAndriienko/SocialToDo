@@ -100,6 +100,10 @@ body#random-wall {
     color: #1a2a37!important;
 }
 
+.find-friend-form {
+    display: flex;
+}
+
 .find-friend-form input{
     background-color: #fff;
     border: solid 1px #0f0f0f;

@@ -61,9 +61,7 @@
 }
 
 .left-panel {
-    margin-top: 64px;
     width: 20%;
-    /*float: left;*/
     display: inline-block;
 }
 
@@ -71,6 +69,58 @@
     color: #fff;
     font-size: 18px;
     line-height: 30px;
+}
+
+.left-panel .menu li {
+    color: #fff;
+    font-size: 18px;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+.favourite:hover a {
+    text-decoration: underline;
+}
+
+.edit:hover a {
+    text-decoration: underline;
+}
+
+.yellow.active i,
+.yellow:hover i {
+    color: #FFC400;
+}
+
+.brown:hover i {
+    color: #612403;
+}
+
+.menu i {
+    margin-right: 10px;
+}
+
+.menu .favourite:hover i{
+    color: #FFC400;
+}
+
+.menu .done:hover i{
+    color: #008000;
+}
+
+.favourite-choise i{
+    color: #FFC400;
+}
+
+.done-choise i{
+    color: #008000;
+}
+
+.menu li:hover {
+    text-decoration: underline;
+}
+
+.grey {
+    background: #444;
 }
 
 .signout:before {
@@ -156,13 +206,13 @@
 .line-block-about {
     display: flex;
     justify-content: center;
-    line-height: 60px;
+    margin-top: 30px;
 }
 
 .line-block-about div {
     padding: 10px;
     cursor: pointer;
-    margin-top: 30px;
+    margin-bottom: 20px;
 }
 
 .line-block-about a {
