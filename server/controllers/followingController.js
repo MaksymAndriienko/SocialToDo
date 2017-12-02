@@ -222,3 +222,60 @@ module.exports.findUserByName = function(req, res){
     }
     
 }
+
+module.exports.getFollowing = function(req, res){
+    User.findOne({
+        username: req.body.username
+    })
+    .populate({
+        path: 'reletions',
+        populate: {
+            path: 'idFollowering',
+            model: 'User'
+          }
+    })
+    .exec(function(error, data){
+        res.send(data);
+    })
+}
+
+module.exports.getUserFollowers = function(req, res){
+    User.findOne({
+        username: req.body.username
+    })
+    .exec(function(error, user){
+        if (error)
+            throw error
+        if(!user){
+            res.send({
+                seccess: false,
+                msg: 'Not found user'
+            })
+        }
+        else{
+            following.find({
+                idFollowering: user._id
+            })
+            .populate({
+                path: 'idFollower',
+                model: 'User'
+            })
+            .exec(function(err, data){
+                if(err) throw err;
+                else if(!data){
+                    res.send({
+                        success: false,
+                        msg: 'Error'
+                    })
+                }
+                else{
+                    res.send({
+                        success: true,
+                        msg: 'Successful',
+                        data: data
+                    })
+                }
+            });
+        }
+    })
+}

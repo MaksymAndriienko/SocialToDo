@@ -40,6 +40,8 @@ router.post('/follower/getInfore', followingController.testGet);
 router.post('/follower/getuser', followingController.getUsers);
 router.post('/news/getnews', newsController.getNews);
 router.post('/finduser', followingController.findUserByName);
+router.post('/findfollowing', followingController.getFollowing);
+router.post('/findfollowers', followingController.getUserFollowers);
 
 router.get('/memberinfo', passport.authenticate('jwt', { session: false}), function(req, res) {
   var token = getToken(req.headers);
