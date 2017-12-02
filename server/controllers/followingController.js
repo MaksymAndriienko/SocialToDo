@@ -195,3 +195,30 @@ module.exports.getUsers = function(req, res){
         res.send(data);
     });
 }
+
+module.exports.findUserByName = function(req, res){
+    var user = decodeInformation.getInformation(req.body.token);
+    var search = req.body.name.split(' ');
+    console.log(search[1]);
+    if(search[1] != undefined){
+        User.find({$or:[ {'firstname': { $regex: "^" + search[0], $options:'i'}}, {'firstname': { $regex: "^" + search[1], $options:'i'}}, {'lastname': { $regex: "^" + search[1], $options:'i'}}, {'lastname': { $regex: "^" + search[0], $options:'i'}} ]})
+        .populate({
+            path: 'reletions',
+            match: {idFollower: user._id}
+        })
+        .exec(function(error, data){
+            res.send(data);
+        })
+    }
+    else{
+        User.find({$or:[ {'firstname': { $regex: "^" + search[0], $options:'i'}}, {'lastname': { $regex: "^" + search[0], $options:'i'}} ]})
+        .populate({
+            path: 'reletions',
+            match: {idFollower: user._id}
+        })
+        .exec(function(error, data){
+            res.send(data);
+        })
+    }
+    
+}
