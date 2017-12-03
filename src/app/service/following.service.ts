@@ -48,4 +48,11 @@ export class FollowingService {
       .map(res => res.json());
   }
 
+  getFollowers(username){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/api/findfollowers', JSON.stringify({token: localStorage.getItem('id_token'), username: username}), {headers: headers})
+      .map(res => res.json());
+  }
+
 }

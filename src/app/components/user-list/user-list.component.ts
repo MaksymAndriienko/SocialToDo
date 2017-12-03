@@ -37,7 +37,12 @@ export class UserListComponent implements OnInit {
         )
       }
       else if(this.s[0].path == 'followers'){
-        console.log("Show followers");
+        this.followingService.getFollowers(this.s[1].path).subscribe(
+          data => {
+            this.users = data.data;
+          },
+          error => console.log(error)
+        )
       }
       else{
         this.getUsers();

@@ -250,6 +250,8 @@ module.exports.getFollowing = function(req, res){
 }
 
 module.exports.getUserFollowers = function(req, res){
+    var user = decodeInformation.getInformation(req.body.token);
+    var result = [];
     User.findOne({
         username: req.body.username
     })
@@ -268,7 +270,11 @@ module.exports.getUserFollowers = function(req, res){
             })
             .populate({
                 path: 'idFollower',
-                model: 'User'
+                model: 'User',
+                populate: {
+                    path: 'reletions',
+                    match: {idFollower: user._id}
+                }
             })
             .exec(function(err, data){
                 if(err) throw err;
@@ -279,10 +285,13 @@ module.exports.getUserFollowers = function(req, res){
                     })
                 }
                 else{
+                    data.forEach(element => {
+                        result.push(element.idFollower);
+                    });
                     res.send({
                         success: true,
                         msg: 'Successful',
-                        data: data
+                        data: result
                     })
                 }
             });
