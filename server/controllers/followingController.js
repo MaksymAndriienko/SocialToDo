@@ -232,7 +232,7 @@ module.exports.getFollowing = function(req, res){
         populate: {
             path: 'idFollowering',
             model: 'User'
-          }
+        }
     })
     .exec(function(error, data){
         res.send(data);

@@ -31,6 +31,7 @@ import { EditGoalComponent } from './components/edit-goal/edit-goal.component';
 
 const appRoutes: Routes = [
   { path: 'user-list', component: UserListComponent },
+  { path: 'user-list/search', component: UserListComponent },
   { path: 'singup', component: SingupComponent },
   { path: 'singin', component: SinginComponent },
   { path: 'news', component: NewsComponent },

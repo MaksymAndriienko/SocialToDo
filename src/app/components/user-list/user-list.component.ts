@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FollowingService } from '../../service/following.service';
 import { Input } from '@angular/core/src/metadata/directives';
+import {Router, UrlSegment, UrlTree, UrlSegmentGroup, PRIMARY_OUTLET} from "@angular/router";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-list',
@@ -10,11 +12,41 @@ import { Input } from '@angular/core/src/metadata/directives';
 export class UserListComponent implements OnInit {
 
   users: any = [];
+  searchQuery: String;
+  tree: UrlTree;
+  g: UrlSegmentGroup;
+  s: UrlSegment[];
 
-  constructor(private followingService: FollowingService) { }
+  constructor(private followingService: FollowingService, 
+              private route: ActivatedRoute,
+              private router: Router) {
+     this.tree = router.parseUrl(this.router.url);
+     this.g = this.tree.root.children[PRIMARY_OUTLET];
+     this.s = this.g.segments;
+    this.route.queryParams.subscribe(params => {
+      this.searchQuery = params['searchQuery'];
+      if(this.searchQuery != undefined && this.s[1].path == 'search'){
+        this.getUserBySearch();
+      }
+    });
+  }
 
   ngOnInit() {
-    this.getUsers();
+    if(this.searchQuery != undefined && this.s[1].path == 'search'){
+      
+    }
+    else{
+      this.getUsers();
+    }
+  }
+
+  getUserBySearch(){
+    this.followingService.getUsersBySearch(this.searchQuery).subscribe(
+      data => {
+        this.users = data;
+      },
+      error => console.log(error)
+    )
   }
 
   getUsers(){

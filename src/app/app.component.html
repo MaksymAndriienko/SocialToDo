@@ -33,12 +33,12 @@
                     <li *ngIf="userService.loggedIn()" class="logout logout-lg"><a (click)="userService.logout()"> Log Out</a></li>
                     
                 </ul>
-                <form *ngIf="userService.loggedIn()" class="navbar-form navbar-right find-friend-form">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                        </div>
-                        <button type="submit" class="find-btn btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
-                    </form>
+                <form *ngIf="userService.loggedIn()" (submit)="findUsers($event)" class="navbar-form navbar-right find-friend-form">
+                    <div class="form-group">
+                        <input type="text" name="searchUser" [(ngModel)]="searchQuery" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" click="findUsers($event)" class="find-btn btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </form>
 
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->

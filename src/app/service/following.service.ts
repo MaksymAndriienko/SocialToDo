@@ -34,4 +34,11 @@ export class FollowingService {
       .map(res => res.json());
   }
 
+  getUsersBySearch(searchQuery){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/api/finduser', JSON.stringify({token: localStorage.getItem('id_token'), name: searchQuery}), {headers: headers})
+      .map(res => res.json());
+  }
+
 }
