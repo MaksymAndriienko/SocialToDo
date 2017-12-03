@@ -28,16 +28,24 @@ export class UserListComponent implements OnInit {
       if(this.searchQuery != undefined && this.s[1].path == 'search'){
         this.getUserBySearch();
       }
+      else if(this.s[0].path == 'following'){
+        this.followingService.getFollowing(this.s[1].path).subscribe(
+          data => {
+            this.users = data;
+          },
+          error => console.log(error)
+        )
+      }
+      else if(this.s[0].path == 'followers'){
+        console.log("Show followers");
+      }
+      else{
+        this.getUsers();
+      }
     });
   }
 
   ngOnInit() {
-    if(this.searchQuery != undefined && this.s[1].path == 'search'){
-      
-    }
-    else{
-      this.getUsers();
-    }
   }
 
   getUserBySearch(){

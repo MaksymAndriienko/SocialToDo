@@ -29,10 +29,10 @@
                 <a href="#"><ul><li class="size40">{{count.countGoals}}</li><li class="size18">Goals</li></ul></a>
             </div>
             <div class="line-second">
-                <a href="#"><ul><li class="size40">{{count.countFollowing}}</li><li class="size18">Followers</li></ul></a>
+                <a [routerLink]="['/followers', user.username]"><ul><li class="size40">{{count.countFollowing}}</li><li class="size18">Followers</li></ul></a>
             </div>
             <div class="line-third">
-                <a href="#"><ul><li class="size40">{{count.countFollower}}</li><li class="size18">Following</li></ul></a>
+                <a [routerLink]="['/following', user.username]"><ul><li class="size40">{{count.countFollower}}</li><li class="size18">Following</li></ul></a>
             </div>
         </div>
     </div>

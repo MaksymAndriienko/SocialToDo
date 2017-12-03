@@ -224,18 +224,28 @@ module.exports.findUserByName = function(req, res){
 }
 
 module.exports.getFollowing = function(req, res){
+    var user = decodeInformation.getInformation(req.body.token);
+    var result = [];
     User.findOne({
         username: req.body.username
     })
+    .select('reletions')
     .populate({
         path: 'reletions',
         populate: {
             path: 'idFollowering',
-            model: 'User'
+            populate: {
+                path: 'reletions',
+                match: {idFollower: user._id}
+            }
         }
+
     })
     .exec(function(error, data){
-        res.send(data);
+        data.reletions.forEach(element => {
+            result.push(element.idFollowering);
+        });
+        res.send(result);
     })
 }
 
