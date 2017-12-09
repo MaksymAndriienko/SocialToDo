@@ -21,13 +21,26 @@ export class UsersService {
   addNewUser(newUser){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/api/user/signup', JSON.stringify(newUser), {headers: headers}).subscribe();
+    return this.http.post('http://localhost:3000/api/user/signup', JSON.stringify(newUser), {headers: headers})
+      .map(res => res.json())
+      .subscribe(
+        data => {
+          if(data.success){
+            this.toastr.success(data.msg, 'Success!');
+          }
+          else{
+            this.toastr.error(data.msg, 'Oops!');
+          }
+        },
+        error => console.log(error)
+      );
   }
 
   controleError(data){
     if(data.success){
       localStorage.setItem('id_token', data.token);
       localStorage.setItem('username', data.username);
+      localStorage.setItem('avatar', data.avatar);
       this.toastr.success(data.msg, 'Success!');
       this.router.navigate(['/']);
     }

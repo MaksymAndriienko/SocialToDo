@@ -37,6 +37,7 @@ module.exports.decodeImg = function(req, res){
                 else{
                     res.send({
                         success: true,
+                        avatar: fileName,
                         msg: 'Good'
                     });
                 }

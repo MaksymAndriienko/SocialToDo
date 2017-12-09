@@ -3,6 +3,8 @@ import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import {UsersService} from './service/users.service';
 import { ProfileService } from './service/profile.service';
 import {Router, NavigationExtras} from "@angular/router";
+import { AvatarService } from './service/common/avatar.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-root',
@@ -11,14 +13,18 @@ import {Router, NavigationExtras} from "@angular/router";
   providers: [UsersService]
 })
 export class AppComponent {
+  avatar: any;
+  subscription: Subscription;
   constructor( private userService: UsersService, 
                 public toastr: ToastsManager, 
+                private avatarService: AvatarService,
                 vcr: ViewContainerRef, 
                 private profileService: ProfileService,
                 private router: Router) {
     this.toastr.setRootViewContainerRef(vcr);
-
     this.getData();
+    this.getAvatar();
+    this.subscription = this.avatarService.getDataAvatar().subscribe(data => {this.avatar = data.avatar});
   }
 
   searchQuery: String;
@@ -38,7 +44,11 @@ export class AppComponent {
     email: String,
     avatar: String
   };
-
+  
+  getAvatar(){
+    this.avatar = localStorage.getItem('avatar');
+  }
+  
   getData(){
     this.profileService.getInformationProfile().subscribe(
       data => this.user = data,

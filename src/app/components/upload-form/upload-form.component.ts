@@ -1,7 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild} from '@angular/core';
 import {ImageCropperComponent, CropperSettings} from 'ng2-img-cropper';
 import { UploadImageService } from '../../service/upload-image.service';
 import { EditprofileService } from '../../service/editprofile.service';
+import {AvatarService} from '../../service/common/avatar.service';
 
 @Component({
   selector: 'app-upload-form',
@@ -16,7 +17,7 @@ export class UploadFormComponent {
   @ViewChild('cropper', undefined)
   cropper:ImageCropperComponent;
 
-  constructor(private uploadImageService: UploadImageService) {
+  constructor(private uploadImageService: UploadImageService, private avatarService: AvatarService) {
       this.setDefaultImage();
       this.cropperSettings = new CropperSettings();
       this.cropperSettings.noFileInput = true;
@@ -43,7 +44,15 @@ export class UploadFormComponent {
       data: this.data,
       token: localStorage.getItem('id_token')
     };
-    this.uploadImageService.uploadImage(dataImg);
+    this.uploadImageService.uploadImage(dataImg).subscribe(
+      data => {
+        if(data.success == true){
+          localStorage.setItem('avatar', data.avatar);
+          this.avatarService.sendDataAvatar(data.avatar);
+        }
+      },
+      error => console.log(error)
+    );
   }
 
   fileChangeListener($event) {

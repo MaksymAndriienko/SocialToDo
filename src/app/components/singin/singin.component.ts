@@ -15,7 +15,6 @@ export class SinginComponent {
 
   loginUser(event){
     event.preventDefault();
-    console.log('Login...');
     var user = {
       username: this.username,
       password: this.password

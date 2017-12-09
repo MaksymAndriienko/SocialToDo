@@ -10,11 +10,13 @@ import { GoalService } from '../../service/goal.service';
 export class NewsComponent implements OnInit {
 
   tasks: any = [];
-
+  userAvatar: String;
   ffilter = false;
   dfilter = false;
 
-  constructor(private newsService: NewsService, private goalService: GoalService) { }
+  constructor(private newsService: NewsService, private goalService: GoalService) {
+    this.userAvatar = localStorage.getItem('avatar');
+  }
 
   @HostListener("window:scroll", [])
   onScroll(): void {

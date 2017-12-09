@@ -9,7 +9,7 @@ export class UploadImageService {
   uploadImage(imageEncode){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/api/image', JSON.stringify(imageEncode), {headers: headers}).subscribe();
+    return this.http.post('http://localhost:3000/api/image', JSON.stringify(imageEncode), {headers: headers}).map(res => res.json());
   }
 
 }

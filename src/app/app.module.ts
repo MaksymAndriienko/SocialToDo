@@ -27,6 +27,7 @@ import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { NewsService } from './service/news.service';
 import { FollowingService } from './service/following.service';
+import { AvatarService } from './service/common/avatar.service';
 import { EditGoalComponent } from './components/edit-goal/edit-goal.component';
 
 const appRoutes: Routes = [
@@ -81,6 +82,7 @@ const appRoutes: Routes = [
     AuthService,
     UploadImageService,
     FollowingService,
+    AvatarService,
     NewsService,
     EditprofileService,
     ProfileService

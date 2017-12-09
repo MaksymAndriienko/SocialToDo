@@ -25,9 +25,6 @@ module.exports.signup = function(req, res){
             email: req.body.email,
             avatar: req.body.avatar
         });
-
-        console.log(newUser);
-
         newUser.save(function(err){
             if (err) {
                 return res.json({success: false, msg: 'Username already exists.'});
@@ -60,7 +57,8 @@ module.exports.signin = function(req, res){
                         token: token,
                         _id: user._id,
                         displayName: user.firstname + user.lastname,
-                        username: user.username
+                        username: user.username,
+                        avatar: user.avatar
                     });
                 }
                 else{
