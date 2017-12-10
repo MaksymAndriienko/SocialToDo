@@ -49,6 +49,14 @@ var userSchema = new Schema({
       type: String,
       default: ''
     },
+    isAdmin:{
+      type: Boolean,
+      default: false
+    },
+    isActive:{
+      type: Boolean,
+      default: true
+    },
     reletions:[{
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Following'

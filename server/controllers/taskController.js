@@ -227,3 +227,23 @@ module.exports.UpdateTask = function(req, res){
         
     });
 }
+
+module.exports.setFavourite = function(req, res){
+    const updateData = {
+        isFavourite: req.body.isFavourite
+    }
+    Task.findByIdAndUpdate({
+        _id: req.body.id
+    }, updateData, {new: true}, function(error, task){
+        if(error){
+            throw error;
+        }
+        else{
+            res.send({
+                success: true,
+                msq: 'setFavourite',
+                task: task
+            })
+        }
+    })
+}

@@ -4,6 +4,7 @@ import { ProfileService } from '../../service/profile.service';
 import { GoalService } from '../../service/goal.service';
 import { FollowingService } from '../../service/following.service';
 import {Router, NavigationExtras} from "@angular/router";
+import { error } from 'util';
 
 
 @Component({
@@ -73,7 +74,23 @@ export class ProfileComponent implements OnInit {
       },
       error => console.log(error)
     );
+  }
 
+  setFavourite(task){
+    this.goalService.setFavourite(task._id, !task.isFavourite).subscribe(
+      data => {
+        if(data.success){
+          task.isFavourite = data.task.isFavourite;
+        }
+      },
+      error => console.log(error)
+    )
+  }
+
+  filterFavourite(){
+    this.ffilter = !this.ffilter;
+    
+    this.tasks = this.tasks.filter(task => task.isFavourite == this.ffilter);
   }
 
   follower(){

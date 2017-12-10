@@ -19,7 +19,14 @@ export class GoalService {
       this.toastr.error(data.msg, 'Oops!');
     }
   }
-
+  
+  setFavourite(id, isFavourite){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/api/task/setfavourite', JSON.stringify({id: id, isFavourite: isFavourite}), {headers: headers})
+    .map(res => res.json());
+  }
+  
   addLike(idTask){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');

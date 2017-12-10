@@ -4,7 +4,10 @@
     <div class="wrapper">
         <div class="photo-name">
             <div class="photo">
-                <img src="{{user.avatar}}">
+                <a *ngIf="!usernameShow" routerLink="/upload-images">
+                    <img src="{{user.avatar}}">
+                </a>
+                <img *ngIf="usernameShow" src="{{user.avatar}}">
             </div>
             <div class="name-about">
                 <p class="name">{{user.firstname}} {{user.lastname}}</p>
@@ -42,7 +45,7 @@
     <div class="wrap">
         <div class="left-panel">
             <ul class="menu">
-                <li class="favourite" (click)='ffilter=!ffilter' [ngClass]="ffilter ? 'favourite-choise' : ''"><i class="fa fa-star" aria-hidden="true"></i>Favourites</li>
+                <li class="favourite" (click)='filterFavourite()' [ngClass]="ffilter ? 'favourite-choise' : ''"><i class="fa fa-star" aria-hidden="true"></i>Favourites</li>
                 <li class="done" (click)='dfilter=!dfilter' [ngClass]="dfilter ? 'done-choise' : ''"><i class="fa fa-check" aria-hidden="true"></i>Achieved Goals</li>
             </ul>
         </div>
@@ -56,7 +59,7 @@
                     <p class="bold size22 center">{{task.title}}</p>
                     <span class="size18">{{task.content}}</span>
                     <div class="line-block-about">
-                        <div class="favourite yellow"><i class="fa fa-lg fa-star" aria-hidden="true"></i><a>Favourite</a></div>
+                        <div class="favourite yellow" (click)='setFavourite(tasks[i])' [ngClass]="{'active': task.isFavourite}"><i class="fa fa-lg fa-star"  aria-hidden="true"></i><a>Favourite</a></div>
                         <div class="process" [ngClass]="task.proces == 'Done' ? 'green' : 'blue'"><i class="fa fa-lg" [ngClass]="task.proces == 'Done' ? 'fa-check' : 'fa-cogs'" aria-hidden="true"></i><a>{{task.proces}}</a></div>
                         <div class="like" (click)='addLike(tasks[i])' [ngClass]="{'active': task.isLike}"><i class="fa fa-lg fa-heart" aria-hidden="true"></i><a>Like</a></div>
                         <!--<div class="comment"><i class="fa fa-lg fa-comment" aria-hidden="true"></i><a href="#">Comment</a></div>-->
@@ -65,28 +68,6 @@
                 </div>
                 <div class="line-block-image">
                     <img src="{{task.image}}">
-                </div>
-            </div>
-            <div class="line-block">
-                <div class="line-block-text">
-                    <p class="bold size22 center">Parachute jump</p>
-                    <span class="size18"><span class="bold">Skydiving.</span>
-                        Parachuting is performed as a recreational activity and a competitive sport,
-                        widely considered an extreme sport due to the risks involved. Modern militaries
-                        utilize parachuting for the deployment of airborne forces and supplies, and special
-                        operations forces commonly employ parachuting, especially free-fall parachuting,
-                        as a method of insertion. Occasionally forest firefighters, known as
-                        "smokejumpers" in the United States, use parachuting as a means of rapidly
-                        inserting themselves near forest fires in especially remote or otherwise inaccessible areas.</span>
-                    <div class="line-block-about">
-                        <div class="favourite yellow"><i class="fa fa-lg fa-star" aria-hidden="true"></i><a>Favourite</a></div>
-                        <div class="process blue"><i class="fa fa-lg fa-cogs" aria-hidden="true"></i><a>In the process</a></div>
-                        <div class="like"><i class="fa fa-lg fa-heart" aria-hidden="true"></i><a>Like</a></div>
-                        <div class="edit brown"><i class="fa fa-lg fa-edit" aria-hidden="true"></i><a>Edit</a></div>
-                    </div>
-                </div>
-                <div class="line-block-image">
-                    <img src="/assets/image/parashyutist.jpg">
                 </div>
             </div>
             <div style='text-align: center;' *ngIf="!finished">

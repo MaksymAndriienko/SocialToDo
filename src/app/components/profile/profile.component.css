@@ -301,6 +301,7 @@
     margin-right: 10px;
 }
 
+.menu .favourite.active i,
 .menu .favourite:hover i{
     color: #FFC400;
 }

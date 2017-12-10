@@ -18,6 +18,10 @@ var taskShema = new Schema({
     data: {
         type: Date,
         default: Date.now
+    },
+    isFavourite:{
+        type: Boolean,
+        default: false
     }
 }) 
 

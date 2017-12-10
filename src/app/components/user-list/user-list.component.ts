@@ -3,6 +3,7 @@ import { FollowingService } from '../../service/following.service';
 import { Input } from '@angular/core/src/metadata/directives';
 import {Router, UrlSegment, UrlTree, UrlSegmentGroup, PRIMARY_OUTLET} from "@angular/router";
 import { ActivatedRoute } from '@angular/router';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-user-list',
@@ -19,6 +20,7 @@ export class UserListComponent implements OnInit {
 
   constructor(private followingService: FollowingService, 
               private route: ActivatedRoute,
+              public toastr: ToastsManager,
               private router: Router) {
      this.tree = router.parseUrl(this.router.url);
      this.g = this.tree.root.children[PRIMARY_OUTLET];
@@ -80,6 +82,7 @@ export class UserListComponent implements OnInit {
       this.followingService.addNewFollower(newFollower).subscribe(
         data => {
           user.reletions = data.user.reletions;
+          this.toastr.success("You follow this user", 'Success!');
         }
       );
     }
@@ -91,6 +94,7 @@ export class UserListComponent implements OnInit {
       this.followingService.deleteFollowing(Following).subscribe(
         data => {
           user.reletions = data.user.reletions;
+          this.toastr.error('You unfollow this user', 'Success!')
         }
       )
     }

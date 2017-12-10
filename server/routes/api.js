@@ -11,6 +11,7 @@ const profileController = require('../controllers/profileController');
 const followingController = require('../controllers/followingController');
 const generatePeople =require('../services/generate');
 const newsController =require('../controllers/newsController');
+const adminController = require('../controllers/adminController');
 const mongoose = require('mongoose');
 require('../config/passport')(passport);
 
@@ -25,6 +26,7 @@ router.post('/task/api', taskController.addTask);
 router.get('/task/gettasks/:id/:page', taskController.getTasks);
 router.post('/task/update', taskController.UpdateTask);
 router.get('/task/gettasks/another/:username/:page/:token', taskController.getTasksAnother);
+router.post('/task/setfavourite', taskController.setFavourite);
 router.post('/image', imagesController.decodeImg);
 router.get('/profile/:id', profileController.getUserProgile);
 router.get('/profile/another/:username', profileController.getUserProgileAnother);
@@ -42,6 +44,7 @@ router.post('/news/getnews', newsController.getNews);
 router.post('/finduser', followingController.findUserByName);
 router.post('/findfollowing', followingController.getFollowing);
 router.post('/findfollowers', followingController.getUserFollowers);
+router.post('/admin/blocking', adminController.changeBlockingUser);
 
 router.get('/memberinfo', passport.authenticate('jwt', { session: false}), function(req, res) {
   var token = getToken(req.headers);

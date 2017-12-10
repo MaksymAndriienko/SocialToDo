@@ -3,6 +3,7 @@ var passport = require('passport');
 var jwt = require('jwt-simple');
 var config = require('../config/database');
 var User = require('../database/users');
+var emailController = require('../controllers/emailController');
 
 module.exports.signup = function(req, res){
     if(!req.body.username || !req.body.password){
@@ -30,7 +31,8 @@ module.exports.signup = function(req, res){
                 return res.json({success: false, msg: 'Username already exists.'});
             }
             res.json({success: true, msg: 'Successful created new user.'});
-        })
+        });
+        emailController.sendMessage(req.body.email, 'Registration', 'Registration');
     }
 }
 
@@ -51,15 +53,23 @@ module.exports.signin = function(req, res){
             user.comparePassword(req.body.password, function(err, isMatch){
                 if(isMatch && !err){
                     var token = jwt.encode(user, config.secret);
-                    res.json({
-                        success: true,
-                        msg: 'Hello ' + user.username,
-                        token: token,
-                        _id: user._id,
-                        displayName: user.firstname + user.lastname,
-                        username: user.username,
-                        avatar: user.avatar
-                    });
+                    if(user.isActive){
+                        res.json({
+                            success: true,
+                            msg: 'Hello ' + user.username,
+                            token: token,
+                            _id: user._id,
+                            displayName: user.firstname + user.lastname,
+                            username: user.username,
+                            avatar: user.avatar
+                        });
+                    }
+                    else{
+                        res.json({
+                            success: false,
+                            msg: 'Your account is temporarily unavailable.'
+                        })
+                    }
                 }
                 else{
                     res.send({
