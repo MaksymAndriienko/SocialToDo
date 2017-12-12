@@ -57,6 +57,13 @@ var userSchema = new Schema({
       type: Boolean,
       default: true
     },
+    isVerified: {
+      type: Boolean,
+      default: false
+    },
+    tokenVerified: {
+      type: String
+    },
     reletions:[{
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Following'

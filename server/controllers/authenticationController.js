@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var jwt = require('jwt-simple');
 var config = require('../config/database');
+var crypto = require('crypto');
 var User = require('../database/users');
 var emailController = require('../controllers/emailController');
 
@@ -24,7 +25,8 @@ module.exports.signup = function(req, res){
             from: req.body.from,
             gender: req.body.gender,
             email: req.body.email,
-            avatar: req.body.avatar
+            avatar: req.body.avatar,
+            tokenVerified: crypto.randomBytes(16).toString('hex')
         });
         newUser.save(function(err){
             if (err) {
@@ -37,7 +39,6 @@ module.exports.signup = function(req, res){
 }
 
 module.exports.signin = function(req, res){
-    console.log(req.body);
     User.findOne({
         username: req.body.username
     }, function(err, user){
@@ -53,7 +54,7 @@ module.exports.signin = function(req, res){
             user.comparePassword(req.body.password, function(err, isMatch){
                 if(isMatch && !err){
                     var token = jwt.encode(user, config.secret);
-                    if(user.isActive){
+                    if(user.isActive && user.isVerified){
                         res.json({
                             success: true,
                             msg: 'Hello ' + user.username,
@@ -63,6 +64,12 @@ module.exports.signin = function(req, res){
                             username: user.username,
                             avatar: user.avatar
                         });
+                    }
+                    else if(!user.isVerified){
+                        res.json({
+                            success: false,
+                            msg: 'Your must confirm your account.'
+                        })
                     }
                     else{
                         res.json({
@@ -81,3 +88,40 @@ module.exports.signin = function(req, res){
         }
     });
 }
+
+module.exports.verification = function(req, res){
+    User.findOne({
+        tokenVerified: req.params.id
+    }, function(error, user){
+        if(error)
+            throw error;
+       else if(!user){
+           res.send({
+                success: false, 
+                msg: 'User not found.'
+           });
+       }
+       else{
+            if(user.isVerified){
+                res.send({
+                    success: false, 
+                    msg: 'User is already confirm email.'
+                })
+            }
+            else{
+                user.isVerified = true;
+                user.save(function(err, updatedUser){
+                    if(err){
+                        throw err;
+                    }
+                    else{
+                        res.send({
+                            success: true, 
+                            msg: 'Confirm email.'
+                        });
+                    }
+                });
+            }
+       } 
+    });
+};

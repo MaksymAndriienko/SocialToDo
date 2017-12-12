@@ -45,6 +45,7 @@ router.post('/finduser', followingController.findUserByName);
 router.post('/findfollowing', followingController.getFollowing);
 router.post('/findfollowers', followingController.getUserFollowers);
 router.post('/admin/blocking', adminController.changeBlockingUser);
+router.post('/verify/:id', authenticationController.verification);
 
 router.get('/memberinfo', passport.authenticate('jwt', { session: false}), function(req, res) {
   var token = getToken(req.headers);
