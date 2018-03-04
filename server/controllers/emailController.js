@@ -6,8 +6,8 @@ module.exports.sendMessage = function(email, subject, text){
         port: 587,
         secure: false, 
         auth: {
-            user: 'm.andriienko@gmail.com', 
-            pass: 'Jojfo68Ddgs5!'  
+            user: '', 
+            pass: ''  
         }
     });
 
